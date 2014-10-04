@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>denfinder</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <nav class="navbar navbar-default navbar-static-top navbar-map" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index.html">
+            <img class="logo-svg" src="/images/icon_23241_blue.svg">
+            <h3 class="logo-text">DenFinder</h3>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="map-outer-container">
+      <div class="map-container">
+        <div class="panel panel-primary map-controls">
+          <div class="panel-heading">Neighborhood Qualities</div>
+          <div class="panel-body">
+            <form>
+              <div class="form-group">
+                <label for="">
+                  Preferred Location
+                </label>
+                <input type="text" class="form-control" placeholder="City, state or zip code" />
+              </div>
+              <div class="form-group">
+                <label for="">
+                  Income Range
+                </label>
+                <select name="" id="" class="form-control">
+                  <option value="0-25">Below $25K</option>
+                  <option value="25-50">Above $25K</option>
+                  <option value="50-75">Above $50K</option>
+                  <option value="75-100">Above $75K</option>
+                  <option value="100+">Above $100K</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Relationship Status</label>
+                <select name="" id="" class="form-control">
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="It's Complicated">It's Complicated</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Age</label>
+                <select name="" id="" class="form-control">
+                  <option value="">Teens</option>
+                  <option value="">20's</option>
+                  <option value="">30's</option>
+                  <option value="">40's</option>
+                  <option value="">50's</option>
+                  <option value="">60's</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Preferred Community Type</label>
+                <select name="" id="" class="form-control">
+                  <option value="">Suburban</option>
+                  <option value="">City</option>
+                  <option value="">Rural</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Importance School System Quality</label>
+                <select name="" id="" class="form-control">
+                  <option value="">Very Important</option>
+                  <option value="">Somewhat Important</option>
+                  <option value="">Not Very Important</option>
+                </select>
+              </div>
+              <button type="submit" href="/map.html" class="btn btn-primary">Update</button>
+            </form>
+          </div>
+        </div>
+        <div class="map">
+        </div>
+      </div>  
+    </div>
+    
+
+    <!-- build:js scripts/main.js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/main.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
