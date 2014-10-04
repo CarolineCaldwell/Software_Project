@@ -1,0 +1,98 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+.footer {
+  background-color: #1d2021;
+  color: white;
+  padding: 1em;
+}
+
+.logo-svg {
+  height: 2em;
+  position: relative;
+  top: -.2em;
+}
+
+.logo-text {
+  color: white;
+  display: inline;
+  margin-left: .5em;
+}
+
+.navbar-home {
+  background: transparent;
+  border: 0;
+  padding: 1em; 
+}
+
+.navbar-map {
+  background: transparent;
+  border: 0;
+  padding: 1em; 
+  background-color: white;
+}
+
+.navbar-map .logo-text {
+	color: #333333;
+}
+
+.housing-form-container {
+  margin-bottom: 12em;
+  padding-top: 3em;
+}
+
+.housing-form-summary {
+  margin-bottom: 3em;
+}
+
+.promo {
+  background-image: url('/images/manc_clouds.jpg');
+  background-position-y: 40%;
+  background-size: cover; color: #fff;
+  text-align: center;
+}
+
+.map-container {
+  background-image: url('/images/map.jpg');
+  background-size: cover;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  height: 100%;
+  position: relative;
+}
+
+.map-outer-container {
+  height: 600px;
+  padding: 0 20px;
+}
+
+.map-controls {
+  left: 15px;
+  position: absolute;
+  top: 15px;
+}
+
+.promo-content {
+  padding: 6em 2em 12em;
+}
+
+.promo-headline {
+  font-size: 5em; 
+  line-height: 1;
+  font-weight: 800;
+}
+
+.promo-mask {
+  background: rgba(50, 50, 50, .3);
+}
+
+.promo-subhead {
+  font-size: 1.4em;
+  font-weight: 200;
+  letter-spacing: .05em;
+}
