@@ -32,11 +32,17 @@ public class MainController extends WebMvcConfigurerAdapter {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String formSubmit( UserOptions userOptions, BindingResult bindingResult)
 	{
-		if (userOptions.isValid()) 
+		if (userOptions.isNotValid()) 
 		{
 			return "index";
 	    }
 		//return "redirect:/results";
+		System.out.println(userOptions.getLocationName());
+		System.out.println(userOptions.getIncome());
+		System.out.println(userOptions.getRelationshipStatus());
+		System.out.println(userOptions.getAge());
+		System.out.println(userOptions.getCommunityType());
+		System.out.println(userOptions.getSchoolImportance());
 		return "results";
 	}
 }

@@ -53,16 +53,45 @@ public class UserOptions {
 			this.schoolImportance = schoolImportance;
 		}
 		
-		public boolean isValid()
-		{
-			//if it isn't a valid address
-			if(false)
-			{
-				return false;
-			}
-			
-			//else return true
-			return true;
-		}
+		
+		public boolean isNotValid()
+        {
+            String name = this.locationName;
+            Integer zip = null;
+            
+            //If NULL then not valid
+            if(name == null)
+            {
+                return true;
+            }
+            
+            //TRY to make an integer out of string
+            //If it is a string and is not 5 char it is not valid
+            try 
+            { 
+               zip = Integer.parseInt(name);
+               if(name.length() != 5)
+               {
+                   return true;
+               }
+               return false;
+            } 
+            catch(NumberFormatException e) 
+            { 
+                    //Not a zip code 
+            }
+            
+            //Begin check for city, state format
+            for (int i = 0; i < name.length(); i++)
+            {
+                if(name.charAt(i) == ',' & i > 0 & i < (name.length() - 2))
+                {
+                    return false;
+                }
+            }
+            return true;            
+            //End of Function
+        }
+     
 	 
 }
