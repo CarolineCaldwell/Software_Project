@@ -53,16 +53,16 @@ public class UserOptions {
 			this.schoolImportance = schoolImportance;
 		}
 		
-		public boolean isValid()
+		public boolean isNotValid()
 		{
 			//if it isn't a valid address
 			if(false)
 			{
-				return false;
+				return true;
 			}
 			
 			//else return true
-			return true;
+			return false;
 		}
 	 
 }

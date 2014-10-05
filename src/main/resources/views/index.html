@@ -57,13 +57,13 @@
                 Preferred Location
               </label>
               <input type="text" class="form-control" placeholder="City, state or zip code" th:field="*{locationName}" />
-              <td th:if="${#fields.hasErrors('locationName')}" th:errors="*{locationName}">Name Error</td>
+              <!-- <td th:if="${#fields.hasErrors('locationName')}" th:errors="*{locationName}">Name Error</td> -->
             </div>
             <div class="form-group">
               <label for="">
                 Income Range
               </label>
-              <select name="" id="" class="form-control">
+              <select name="" id="" class="form-control" th:field="*{income}">
                 <option value="0-25">Below $25K</option>
                 <option value="25-50">Above $25K</option>
                 <option value="50-75">Above $50K</option>
@@ -73,7 +73,7 @@
             </div>
             <div class="form-group">
               <label for="">Relationship Status</label>
-              <select name="" id="" class="form-control">
+              <select name="" id="" class="form-control" th:field="*{relationshipStatus}">
                 <option value="Single">Single</option>
                 <option value="Unmarried">Married</option>
                 <option value="Not Important">Not Important</option>
@@ -81,29 +81,27 @@
             </div>
             <div class="form-group">
               <label for="">Age</label>
-              <select name="" id="" class="form-control">
-                <option value="">Teens</option>
-                <option value="">20's</option>
-                <option value="">30's</option>
-                <option value="">40's</option>
-                <option value="">50's</option>
-                <option value="">60's</option>
+              <select name="" id="" class="form-control" th:field="*{age}">
+                <option value="0-24">Under 25</option>
+                <option value="25-44">Between 25 and 44</option>
+                <option value="45-64">Between 45 and 64</option>
+                <option value="65+">65 and over</option>
               </select>
             </div>
             <div class="form-group">
               <label for="">Preferred Community Type</label>
-              <select name="" id="" class="form-control">
-                <option value="">Suburban</option>
-                <option value="">City</option>
-                <option value="">Rural</option>
+              <select name="" id="" class="form-control" th:field="*{communityType}">
+                <option value="Suburban">Suburban</option>
+                <option value="City">City</option>
+                <option value="Rural">Rural</option>
               </select>
             </div>
             <div class="form-group">
               <label for="">Importance School System Quality</label>
-              <select name="" id="" class="form-control">
-                <option value="">Very Important</option>
-                <option value="">Somewhat Important</option>
-                <option value="">Not Very Important</option>
+              <select name="" id="" class="form-control" th:field="*{schoolImportance}">
+                <option value="Very Important">Very Important</option>
+                <option value="Somewhat Important">Somewhat Important</option>
+                <option value="Not Very Important">Not Very Important</option>
               </select>
             </div>
             <button type="submit" class="btn btn-primary btn-lg btn-block">Find Housing</button>
