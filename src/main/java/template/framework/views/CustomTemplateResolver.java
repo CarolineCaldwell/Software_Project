@@ -21,7 +21,7 @@ public class CustomTemplateResolver extends TemplateResolver {
 	}
 
 	@PostConstruct
-	private void init() {
+	private void init() { 
 		this.setResourceResolver(new CustomResourceResolver());
 	}
 
