@@ -2,7 +2,9 @@ package template.controllers;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -30,13 +32,21 @@ public class MainController extends WebMvcConfigurerAdapter {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
-	public String formSubmit( UserOptions userOptions, BindingResult bindingResult)
+	public String formSubmit( UserOptions userOptions, Model a)
 	{
 		if (userOptions.isNotValid()) 
 		{
 			return "index";
 	    }
-		//return "redirect:/results";
+		UserOptions test = new UserOptions();
+		test.setAge("derp");
+		test.setIncome("town");
+		test.setLocationName("dingle");
+		test.setCommunityType("berry");
+		test.setRelationshipStatus("dunkey");
+		test.setSchoolImportance("fuck");
+		
+		a.addAttribute("test", test);
 		System.out.println(userOptions.getLocationName());
 		System.out.println(userOptions.getIncome());
 		System.out.println(userOptions.getRelationshipStatus());

@@ -14,7 +14,18 @@
   </head>
   <body>
     	
-		LocationName: {locationName}
-    	
+		<p th:text="'LocationName: ' + ${userOptions.locationName}" />
+		<p th:text="'Income: ' + ${userOptions.income}" />
+		<p th:text="'Relationship Status: ' + ${userOptions.relationshipStatus}" />
+		<p th:text="'Age: ' + ${userOptions.age}" />
+		<p th:text="'Community Type: ' + ${userOptions.communityType}" />
+		<p th:text="'School Importance: ' + ${userOptions.schoolImportance}" />
+		
+    	<p th:text="'LocationName: ' + ${test.locationName}" />
+		<p th:text="'Income: ' + ${test.income}" />
+		<p th:text="'Relationship Status: ' + ${test.relationshipStatus}" />
+		<p th:text="'Age: ' + ${test.age}" />
+		<p th:text="'Community Type: ' + ${test.communityType}" />
+		<p th:text="'School Importance: ' + ${test.schoolImportance}" />
 </body>
 </html>
