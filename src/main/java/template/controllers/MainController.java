@@ -1,6 +1,9 @@
 package template.controllers;
 
 
+import java.io.IOException;
+
+import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import template.controllers.*;
 import template.framework.objects.UserOptions;
 
 @Controller 
@@ -30,7 +34,7 @@ public class MainController extends WebMvcConfigurerAdapter {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
-	public String formSubmit( UserOptions userOptions, BindingResult bindingResult)
+	public String formSubmit( UserOptions userOptions, BindingResult bindingResult) throws JSONException, IOException
 	{
 		if (userOptions.isNotValid()) 
 		{
@@ -43,6 +47,12 @@ public class MainController extends WebMvcConfigurerAdapter {
 		System.out.println(userOptions.getAge());
 		System.out.println(userOptions.getCommunityType());
 		System.out.println(userOptions.getSchoolImportance());
+		
+		Info APIinfo = new Info();
+		LocationAPIPage apiLatCall = new LocationAPIPage();
+		LocationFCCPage apiFIPSCall = new LocationFCCPage();
+		APIinfo = apiLatCall.callGeocoding(userOptions);
+		apiFIPSCall.callFCC(APIinfo);
 		return "results";
 	}
 }
