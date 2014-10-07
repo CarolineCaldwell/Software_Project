@@ -1,13 +1,12 @@
 package template.controllers;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.web.client.RestTemplate;
+//import org.springframework.web.client.RestTemplate;
 
 import template.controllers.Info;
 
@@ -19,7 +18,7 @@ public class LocationFCCPage {
 		StringBuilder website = new StringBuilder();
 		website.append("http://data.fcc.gov/api/block/find?format=json&latitude=");
 		website.append(coordinates.getLat() + "&longitude=");
-		website.append(coordinates.getLng()/* + "&showall=true"*/);
+		website.append(coordinates.getLng() + "&showall=true");
 		
 		String site = website.toString();
 		URL url = new URL(site);
@@ -29,15 +28,19 @@ public class LocationFCCPage {
 			content += scan.nextLine();
 		scan.close();
 		
-		System.out.println(content);
-		
 		JSONObject obj = new JSONObject(content);
 		JSONObject results = obj.getJSONObject("Block");
 		
 		String value = results.getString("FIPS");
-		System.out.println(value);
 		
 		coordinates.setFIPS(value);
+		
+		String state = value.substring(0, 2);
+		coordinates.setState(state);
+		String county = value.substring(2, 5);
+		coordinates.setCounty(county);
+		String tract = value.substring(5, 11);
+		coordinates.setTract(tract);
 		
 		return coordinates;
 	}

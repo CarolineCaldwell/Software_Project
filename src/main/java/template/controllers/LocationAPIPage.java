@@ -46,6 +46,8 @@ public class LocationAPIPage {
 		information.setLat(String.valueOf(value));
 		value = locationValue.getDouble("lng");
 		information.setLng(String.valueOf(value));
+		
+		information.setLocation(location.toString());
 
 		return information;
 		

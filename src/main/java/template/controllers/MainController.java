@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +35,7 @@ public class MainController extends WebMvcConfigurerAdapter {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
-	public String formSubmit( UserOptions userOptions, BindingResult bindingResult) throws JSONException, IOException
+	public String formSubmit( UserOptions userOptions, Model a) throws JSONException, IOException
 	{
 		if (userOptions.isNotValid()) 
 		{
@@ -48,11 +49,23 @@ public class MainController extends WebMvcConfigurerAdapter {
 		System.out.println(userOptions.getCommunityType());
 		System.out.println(userOptions.getSchoolImportance());
 		
-		Info APIinfo = new Info();
+		Info info = new Info();
 		LocationAPIPage apiLatCall = new LocationAPIPage();
 		LocationFCCPage apiFIPSCall = new LocationFCCPage();
-		APIinfo = apiLatCall.callGeocoding(userOptions);
-		apiFIPSCall.callFCC(APIinfo);
+		IncomeAPIPage apiIncomeCall = new IncomeAPIPage();
+		AgeAPIPage apiAgeCall = new AgeAPIPage();
+		MarriedAPIPage apiMarriedCall = new MarriedAPIPage();
+		EducationAPIPage apiEducationCall = new EducationAPIPage();
+		
+		info = apiLatCall.callGeocoding(userOptions);
+		apiFIPSCall.callFCC(info);
+		apiIncomeCall.callIncome(info, userOptions);
+		apiAgeCall.callAge(info, userOptions);
+		apiMarriedCall.callMarried(info, userOptions);
+		apiEducationCall.callEducation(info, userOptions);
+		
+		a.addAttribute("info", info);
+		
 		return "results";
 	}
 }
