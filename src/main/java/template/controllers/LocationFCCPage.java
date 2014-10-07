@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.web.client.RestTemplate;
+//import org.springframework.web.client.RestTemplate;
 
 import template.controllers.Info;
 
@@ -19,7 +19,7 @@ public class LocationFCCPage {
 		StringBuilder website = new StringBuilder();
 		website.append("http://data.fcc.gov/api/block/find?format=json&latitude=");
 		website.append(coordinates.getLat() + "&longitude=");
-		website.append(coordinates.getLng()/* + "&showall=true"*/);
+		website.append(coordinates.getLng() + "&showall=true");
 		
 		String site = website.toString();
 		URL url = new URL(site);
@@ -35,7 +35,6 @@ public class LocationFCCPage {
 		JSONObject results = obj.getJSONObject("Block");
 		
 		String value = results.getString("FIPS");
-		System.out.println(value);
 		
 		coordinates.setFIPS(value);
 		
