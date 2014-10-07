@@ -52,8 +52,17 @@ public class MainController extends WebMvcConfigurerAdapter {
 		Info info = new Info();
 		LocationAPIPage apiLatCall = new LocationAPIPage();
 		LocationFCCPage apiFIPSCall = new LocationFCCPage();
+		IncomeAPIPage apiIncomeCall = new IncomeAPIPage();
+		AgeAPIPage apiAgeCall = new AgeAPIPage();
+		MarriedAPIPage apiMarriedCall = new MarriedAPIPage();
+		EducationAPIPage apiEducationCall = new EducationAPIPage();
+		
 		info = apiLatCall.callGeocoding(userOptions);
 		apiFIPSCall.callFCC(info);
+		apiIncomeCall.callIncome(info, userOptions);
+		apiAgeCall.callAge(info, userOptions);
+		apiMarriedCall.callMarried(info, userOptions);
+		apiEducationCall.callEducation(info, userOptions);
 		
 		a.addAttribute("info", info);
 		

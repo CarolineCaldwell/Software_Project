@@ -1,7 +1,6 @@
 package template.controllers;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -29,14 +28,19 @@ public class LocationFCCPage {
 			content += scan.nextLine();
 		scan.close();
 		
-		System.out.println(content);
-		
 		JSONObject obj = new JSONObject(content);
 		JSONObject results = obj.getJSONObject("Block");
 		
 		String value = results.getString("FIPS");
 		
 		coordinates.setFIPS(value);
+		
+		String state = value.substring(0, 2);
+		coordinates.setState(state);
+		String county = value.substring(2, 5);
+		coordinates.setCounty(county);
+		String tract = value.substring(5, 11);
+		coordinates.setTract(tract);
 		
 		return coordinates;
 	}

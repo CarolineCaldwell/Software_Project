@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html class="no-js">
   <head>
@@ -13,8 +16,75 @@
 
   </head>
   <body>
-    	
-		LocationName: {locationName}
-    	
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="promo">
+      <div class="promo-mask">
+        
+        <nav class="navbar navbar-default navbar-static-top navbar-home" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">
+                <img class="logo-svg" src="/images/icon_23241.svg">
+                <h3 class="logo-text">DenFinder</h3>
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="promo-content">
+          <div class="promo-headline">
+            There's No Place Like Home
+          </div>
+          <div class="promo-subhead">
+            Find homes in neighborhoods you'll love
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="housing-form-container container-fluid">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <h2 class="text-center">
+            Suggested Neighborhoods
+          </h2>
+          <p class="text-center housing-form-summary">
+            These neighborhoods match your preferences!
+          </p>
+    		<div>    
+          		<p th:text="'Location Name:  ' + ${userOptions.locationName}" />
+          	    <p th:text="'Income:  ' + ${userOptions.income}" />
+          	    <p th:text="'Relationship Status:  ' + ${userOptions.relationshipStatus}" />
+          	    <p th:text="'Age:  ' + ${userOptions.age}" />
+          	    <p th:text="'Community Type:  ' + ${userOptions.communityType}" />
+          	    <p th:text="'School Importance:  ' + ${userOptions.schoolImportance}" />
+  		     	<p th:text="'FIPS Code:  ' + ${info.FIPS}" />
+  		     	<p th:text="'All Income Results:  ' + ${info.totalIncomeResults}" />
+  		     	<p th:text="'Income Bracket Results:  ' + ${info.incomeBracketResults}" />
+  		     	<p th:text="'All Age Results:  ' + ${info.totalAgeResults}" />
+  		     	<p th:text="'Age Bracket Results:  ' + ${info.ageBracketResults}" />
+  		     	<p th:text="'Married Results:  ' + ${info.totalMarriedResults}" />
+  		     	<p th:text="'Not Married Results:  ' + ${info.totalNotMarriedResults}" />
+  		     	<p th:text="'Education Results:  ' + ${info.educationResults}" />
+   			</div> 
+            </div>
+      </div>
+    </div>
+         
+          
+    <div class="footer">
+      <div class="container-fluid">
+        Made with love from the Credera team 
+      </div>
+    </div>
+
+    <!-- build:js scripts/main.js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/main.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
