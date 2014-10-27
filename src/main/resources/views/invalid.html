@@ -5,7 +5,7 @@
     <title>denfinder</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <link rel="shortcut icon" href="http://i.imgur.com/QFaOCVd.png" >
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/global.css">
@@ -49,20 +49,20 @@
             Start Here
           </h2>
           <p class="text-center housing-form-summary">
-            Let's find a neighborhood that best matches your life stage and preferences. 
+            Let's find a neighborhood that best matches your life stage and preferences.
           </p>
+          <hr style="height:3px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" /> 
           <form action="#" th:action="@{/}" th:object="${userOptions}" method="post">
             <div class="form-group">
               <label for="">
                 Preferred Location
               </label>
-              <input type="text" class="form-control" placeholder="City, state or ZIP code" th:field="*{locationName}" />
-              <p> 
-              	Error! Please enter either a City, State or ZIP code.
-              	Ex: Waco, Texas  or 76706
-              </p>
+              <input type="text" class="form-control" placeholder="City, state or zip code" th:field="*{locationName}" />
               <!-- <td th:if="${#fields.hasErrors('locationName')}" th:errors="*{locationName}">Name Error</td> -->
+              <p>Error! Please input a City, State or ZipCode <br>
+              	 Example: Waco, Texas or 76706 </p>
             </div>
+            <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
             <div class="form-group">
               <label for="">
                 Income Range
@@ -75,6 +75,15 @@
                 <option value="100+">Above $100K</option>
               </select>
             </div>
+             How Important is income? (1-not important, 5-very important) <br>
+             <input type="radio" name="rating2" value="1">1  &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating2" value="2">2  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating2" value="3">3 &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating2" value="4">4  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating2" value="5" checked>5 
+        	 <br>
+        	 <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
+        	 
             <div class="form-group">
               <label for="">Relationship Status</label>
               <select name="" id="" class="form-control" th:field="*{relationshipStatus}">
@@ -83,6 +92,14 @@
                 <option value="Not Important">Not Important</option>
               </select>
             </div>
+             How Important is the majority relationship status the area? (1-not important, 5-very important)<br>
+             <input type="radio" name="rating3" value="1">1  &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating3" value="2">2  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating3" value="3">3 &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating3" value="4">4  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating3" value="5" checked>5 
+        	 <br>
+        	 <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
             <div class="form-group">
               <label for="">Age</label>
               <select name="" id="" class="form-control" th:field="*{age}">
@@ -92,6 +109,14 @@
                 <option value="65+">65 and over</option>
               </select>
             </div>
+             How Important is average age of the area? (1-not important, 5-very important) <br>
+             <input type="radio" name="rating4" value="1">1  &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating4" value="2">2  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating4" value="3">3 &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating4" value="4">4  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating4" value="5" checked>5 
+        	 <br>
+        	 <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
             <div class="form-group">
               <label for="">Preferred Community Type</label>
               <select name="" id="" class="form-control" th:field="*{communityType}">
@@ -100,6 +125,14 @@
                 <option value="Rural">Rural</option>
               </select>
             </div>
+             How Important is age? (1-not important, 5-very important)<br>
+             <input type="radio" name="rating5" value="1">1  &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating5" value="2">2  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating5" value="3">3 &nbsp &nbsp &nbsp &nbsp
+             <input type="radio" name="rating5" value="4">4  &nbsp &nbsp &nbsp &nbsp 
+             <input type="radio" name="rating5" value="5" checked>5 
+        	 <br>
+        	 <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
             <div class="form-group">
               <label for="">Importance School System Quality</label>
               <select name="" id="" class="form-control" th:field="*{schoolImportance}">
@@ -108,7 +141,8 @@
                 <option value="Not Very Important">Not Very Important</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Find Housing</button>
+            <hr style="height:3px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
+            <button type="submit" class="btn btn-default btn-primary btn-lg btn-block">Find Housing</button>
           </form>
         </div>
       </div>
