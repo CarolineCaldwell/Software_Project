@@ -1,0 +1,130 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>denfinder</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="promo">
+      <div class="promo-mask">
+        
+        <nav class="navbar navbar-default navbar-static-top navbar-home" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">
+                <img class="logo-svg" src="/images/icon_23241.svg">
+                <h3 class="logo-text">DenFinder</h3>
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="promo-content">
+          <div class="promo-headline">
+            There's No Place Like Home
+          </div>
+          <div class="promo-subhead">
+            Find homes in neighborhoods you'll love
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="housing-form-container container-fluid">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <h2 class="text-center">
+            Start Here
+          </h2>
+          <p class="text-center housing-form-summary">
+            Let's find a neighborhood that best matches your life stage and preferences. 
+          </p>
+          <form action="#" th:action="@{/}" th:object="${userOptions}" method="post">
+            <div class="form-group">
+              <label for="">
+                Preferred Location
+              </label>
+              <input type="text" class="form-control" placeholder="City, state or ZIP code" th:field="*{locationName}" />
+              <p> 
+              	Error! Please enter either a City, State or ZIP code.
+              	Ex: Waco, Texas  or 76706
+              </p>
+              <!-- <td th:if="${#fields.hasErrors('locationName')}" th:errors="*{locationName}">Name Error</td> -->
+            </div>
+            <div class="form-group">
+              <label for="">
+                Income Range
+              </label>
+              <select name="" id="" class="form-control" th:field="*{income}">
+                <option value="0-25">Below $25K</option>
+                <option value="25-50">$25-50K</option>
+                <option value="50-75">$50-75K</option>
+                <option value="75-100">$75-100</option>
+                <option value="100+">Above $100K</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Relationship Status</label>
+              <select name="" id="" class="form-control" th:field="*{relationshipStatus}">
+                <option value="Single">Single</option>
+                <option value="Unmarried">Married</option>
+                <option value="Not Important">Not Important</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Age</label>
+              <select name="" id="" class="form-control" th:field="*{age}">
+                <option value="0-24">Under 25</option>
+                <option value="25-44">Between 25 and 44</option>
+                <option value="45-64">Between 45 and 64</option>
+                <option value="65+">65 and over</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Preferred Community Type</label>
+              <select name="" id="" class="form-control" th:field="*{communityType}">
+                <option value="Suburban">Suburban</option>
+                <option value="City">City</option>
+                <option value="Rural">Rural</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Importance School System Quality</label>
+              <select name="" id="" class="form-control" th:field="*{schoolImportance}">
+                <option value="Very Important">Very Important</option>
+                <option value="Somewhat Important">Somewhat Important</option>
+                <option value="Not Very Important">Not Very Important</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Find Housing</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="footer">
+      <div class="container-fluid">
+        Made with love from the Credera team 
+      </div>
+    </div>
+
+    <!-- build:js scripts/main.js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/main.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

@@ -39,7 +39,7 @@ public class MainController extends WebMvcConfigurerAdapter {
 	{
 		if (userOptions.isNotValid()) 
 		{
-			return "index";
+			return "invalid";
 	    }
 		//return "redirect:/results";
 		System.out.println(userOptions.getLocationName());
