@@ -2,11 +2,14 @@ package template.controllers;
 
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,7 +29,12 @@ public class MainController extends WebMvcConfigurerAdapter {
         registry.addViewController("/results").setViewName("results");
     }*/
 	
-	
+	@ModelAttribute("ratings")
+	public List<int[]> populateRatings()
+	{
+		int[] temp = new int[]{1,2,3,4,5};
+		return Arrays.asList(temp);
+	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(UserOptions userOptions) 
@@ -48,6 +56,10 @@ public class MainController extends WebMvcConfigurerAdapter {
 		System.out.println(userOptions.getAge());
 		System.out.println(userOptions.getCommunityType());
 		System.out.println(userOptions.getSchoolImportance());
+		System.out.println(userOptions.getIncomeImportance());
+		System.out.println(userOptions.getRelationshipStatusImportance());
+		System.out.println(userOptions.getAgeImportance());
+		System.out.println(userOptions.getCommunityTypeImportance());
 		
 		Info info = new Info();
 		LocationAPIPage apiLatCall = new LocationAPIPage();
