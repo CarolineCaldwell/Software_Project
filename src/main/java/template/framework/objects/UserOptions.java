@@ -14,6 +14,10 @@ public class UserOptions {
 	    private String age;
 	    private String communityType;
 	    private String schoolImportance;
+	    private String incomeImportance;
+	    private String relationshipStatusImportance;
+	    private String ageImportance;
+	    private String communityTypeImportance;
 	    
 	    // getters and setters...
 		public String getLocationName() {
@@ -51,6 +55,12 @@ public class UserOptions {
 		}
 		public void setSchoolImportance(String schoolImportance) {
 			this.schoolImportance = schoolImportance;
+		}
+		public String getIncomeImportance() {
+			return incomeImportance;
+		}
+		public void setIncomeImportance(String incomeImportance) {
+			this.incomeImportance = incomeImportance;
 		}
 		
 		
@@ -92,6 +102,25 @@ public class UserOptions {
             return true;            
             //End of Function
         }
+		public String getRelationshipStatusImportance() {
+			return relationshipStatusImportance;
+		}
+		public void setRelationshipStatusImportance(
+				String relationshipStatusImportance) {
+			this.relationshipStatusImportance = relationshipStatusImportance;
+		}
+		public String getAgeImportance() {
+			return ageImportance;
+		}
+		public void setAgeImportance(String ageImportance) {
+			this.ageImportance = ageImportance;
+		}
+		public String getCommunityTypeImportance() {
+			return communityTypeImportance;
+		}
+		public void setCommunityTypeImportance(String communityTypeImportance) {
+			this.communityTypeImportance = communityTypeImportance;
+		}
      
 	 
 }
