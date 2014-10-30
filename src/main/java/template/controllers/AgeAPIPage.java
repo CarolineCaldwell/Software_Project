@@ -49,6 +49,7 @@ public class AgeAPIPage {
 							while (scan01.hasNext()) 
 								ageBracket += scan01.nextLine();
 							scan01.close();
+							break;
 							
 			case "25-44":	String call02 = website.toString();
 							call02 += "019E";
@@ -58,6 +59,7 @@ public class AgeAPIPage {
 							while (scan02.hasNext()) 
 								ageBracket += scan02.nextLine();
 							scan02.close();
+							break;
 							
 			case "45-64":	String call03 = website.toString();
 							call03 += "036E";
@@ -67,6 +69,7 @@ public class AgeAPIPage {
 							while (scan03.hasNext()) 
 								ageBracket += scan03.nextLine();
 							scan03.close();
+							break;
 							
 			case "65+":		String call04 = website.toString();
 							call04 += "053E";
@@ -75,7 +78,8 @@ public class AgeAPIPage {
 							Scanner scan04 = new Scanner(call04Url.openStream());
 							while (scan04.hasNext()) 
 								ageBracket += scan04.nextLine();
-							scan04.close();	
+							scan04.close();
+							break;
 		}
 		
 		info.setAgeBracketResults(ageBracket);

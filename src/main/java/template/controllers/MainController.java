@@ -17,8 +17,10 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import template.algorithm.ApiResults;
 import template.controllers.*;
 import template.framework.objects.UserOptions;
+import template.parsers.IncomeParser;
 
 @Controller 
 public class MainController extends WebMvcConfigurerAdapter {
@@ -75,6 +77,11 @@ public class MainController extends WebMvcConfigurerAdapter {
 		apiAgeCall.callAge(info, userOptions);
 		apiMarriedCall.callMarried(info, userOptions);
 		apiEducationCall.callEducation(info, userOptions);
+		
+		ApiResults apiResults = new ApiResults();
+		IncomeParser incomeParser = new IncomeParser();
+		
+		incomeParser.parseIncome(info, apiResults);
 		
 		a.addAttribute("info", info);
 		
