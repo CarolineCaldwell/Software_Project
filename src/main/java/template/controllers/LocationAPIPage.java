@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
-import template.controllers.Info;
-import template.framework.objects.*;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import template.controllers.Info;
+import template.framework.objects.*;
+
 public class LocationAPIPage {
 	
-	public Info callGeocoding(UserOptions options) throws JSONException, IOException {
+	public Info callGeocoding(UserOptions options) throws  IOException, JSONException {
 		
 		StringBuilder location = new StringBuilder();
 		StringBuilder website = new StringBuilder();

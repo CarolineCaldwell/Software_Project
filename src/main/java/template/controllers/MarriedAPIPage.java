@@ -17,18 +17,16 @@ public class MarriedAPIPage {
 		StringBuilder totalMarried = new StringBuilder();
 		
 		// This is the API call for the total income in the area
-		totalMarried.append("http://api.census.gov/data/2011/acs5?get=B11001_001E"
+		totalMarried.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B11001_001E"
 							+ "&for=block+group:*&in=state:" + info.getState()
-							+ "+county:" + info.getCounty() + "+tract:" + info.getTract());
+							+ "+county:" + info.getCounty()); /*+ "+tract:" + info.getTract());*/
 		
 		// This is the API call for the total income in the area
-		totalNotMarried.append("http://api.census.gov/data/2011/acs5?get=B11001_003E"
+		totalNotMarried.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B11001_003E"
 							+ "&for=block+group:*&in=state:" + info.getState()
-							+ "+county:" + info.getCounty() + "+tract:" + info.getTract());
+							+ "+county:" + info.getCounty()); /*+ "+tract:" + info.getTract());*/
 		
 		String totalSite = totalMarried.toString();
-		
-		System.out.println(totalSite);
 		
 		URL totalUrl = new URL(totalSite);
 		Scanner totalScan = new Scanner(totalUrl.openStream());
@@ -39,9 +37,6 @@ public class MarriedAPIPage {
 		info.setTotalMarriedResults(totalContent);
 		
 		String totalNotMarriedSite = totalNotMarried.toString();
-		
-		System.out.println(totalSite);
-		System.out.println(totalNotMarriedSite);
 		
 		URL totalNotMarriedUrl = new URL(totalNotMarriedSite);
 		Scanner totalNotMarriedScan = new Scanner(totalNotMarriedUrl.openStream());

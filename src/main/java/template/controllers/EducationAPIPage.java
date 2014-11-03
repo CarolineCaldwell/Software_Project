@@ -11,8 +11,6 @@ public class EducationAPIPage {
 	
 	public void callEducation(Info info, UserOptions options) throws IOException {
 		
-		String education = options.getSchoolImportance();
-		
 		StringBuilder website = new StringBuilder();
 		
 		website.append("http://api.education.com/service/service.php?f=getTestRating&Resf=json&"

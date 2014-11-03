@@ -17,8 +17,9 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import template.algorithm.AlgorithmController;
+import template.algorithm.ApiImportance;
 import template.algorithm.ApiResults;
-import template.controllers.*;
 import template.framework.objects.UserOptions;
 import template.parsers.IncomeParser;
 
@@ -78,10 +79,19 @@ public class MainController extends WebMvcConfigurerAdapter {
 		apiMarriedCall.callMarried(info, userOptions);
 		apiEducationCall.callEducation(info, userOptions);
 		
-		ApiResults apiResults = new ApiResults();
 		IncomeParser incomeParser = new IncomeParser();
 		
-		incomeParser.parseIncome(info, apiResults);
+		ApiResults apiResults [] = incomeParser.parseIncome(info, userOptions);
+		
+//Start Algorithm		
+//		AlgorithmController algorithmController = null;
+//		ApiImportance apiStatic = new ApiImportance(userOptions);
+//		//call algorithm
+//		for(ApiResults result : apiResults)
+//		{
+//			algorithmController.generateAlgorithm(result, apiStatic);
+//		}
+//End Algorithm
 		
 		a.addAttribute("info", info);
 		

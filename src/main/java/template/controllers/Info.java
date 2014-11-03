@@ -1,19 +1,17 @@
 package template.controllers;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Info {
 	
+	private int    numTracts;
+	//////////////////////////
 	private String location;
 	private String lng;
 	private String lat;
 	private String FIPS;
 	private String state;
 	private String county;
-	private String tract;
-	
-	// These are TEMPORARY variables.
+	private String tract;	// Currently not used
+	//////////////////////////
 	private String totalIncomeResults;
 	private String incomeBracketResults;
 	private String totalAgeResults;
@@ -23,6 +21,7 @@ public class Info {
 	private String educationResults;
 	
 	Info() {
+		numTracts = 0;
 		location = "";
 		lat = "";
 		lng = "";
@@ -38,6 +37,14 @@ public class Info {
 		totalMarriedResults = "";
 		totalNotMarriedResults = "";
 		educationResults = "";
+	}
+	
+	public int getNumTracts() {
+		return numTracts;
+	}
+
+	public void setNumTracts(int numTracts) {
+		this.numTracts = numTracts;
 	}
 	
 	public String getLocation() {
