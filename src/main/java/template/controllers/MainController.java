@@ -21,7 +21,7 @@ import template.algorithm.AlgorithmController;
 import template.algorithm.ApiImportance;
 import template.algorithm.ApiResults;
 import template.framework.objects.UserOptions;
-import template.parsers.IncomeParser;
+import template.parsers.*;
 
 @Controller 
 public class MainController extends WebMvcConfigurerAdapter {
@@ -80,8 +80,14 @@ public class MainController extends WebMvcConfigurerAdapter {
 		apiEducationCall.callEducation(info, userOptions);
 		
 		IncomeParser incomeParser = new IncomeParser();
+		AgeParser ageParser = new AgeParser();
+		MarriedParser marriedParser = new MarriedParser();
+		EducationParser educationParser = new EducationParser();
 		
-		ApiResults apiResults [] = incomeParser.parseIncome(info, userOptions);
+		ApiResults apiResults [] = incomeParser.parseIncome(info);
+		ageParser.parseAge(info, apiResults);
+		marriedParser.parseMarried(info, apiResults);
+		educationParser.parseEducation(info, apiResults);
 		
 //Start Algorithm		
 //		AlgorithmController algorithmController = null;

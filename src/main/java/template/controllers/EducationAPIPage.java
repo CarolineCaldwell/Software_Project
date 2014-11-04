@@ -14,7 +14,8 @@ public class EducationAPIPage {
 		StringBuilder website = new StringBuilder();
 		
 		website.append("http://api.education.com/service/service.php?f=getTestRating&Resf=json&"
-						+ "key=8f222f04d7c956ea55a62c50640765fa&sn=sf&v=4&");
+						+ "key=6b1b07ef4acd2685928c44cbc517e22b&sn=sf&v=4&");		
+						/*+ "key=8f222f04d7c956ea55a62c50640765fa&sn=sf&v=4&");*/
 		
 		if (info.getLocation().matches("[0-9]*") ) 
 			website.append("zip=" + info.getLocation());

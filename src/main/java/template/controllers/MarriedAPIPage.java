@@ -18,12 +18,12 @@ public class MarriedAPIPage {
 		
 		// This is the API call for the total income in the area
 		totalMarried.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B11001_001E"
-							+ "&for=block+group:*&in=state:" + info.getState()
+							+ "&for=tract:*&in=state:" + info.getState()
 							+ "+county:" + info.getCounty()); /*+ "+tract:" + info.getTract());*/
 		
 		// This is the API call for the total income in the area
 		totalNotMarried.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B11001_003E"
-							+ "&for=block+group:*&in=state:" + info.getState()
+							+ "&for=tract:*&in=state:" + info.getState()
 							+ "+county:" + info.getCounty()); /*+ "+tract:" + info.getTract());*/
 		
 		String totalSite = totalMarried.toString();

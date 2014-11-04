@@ -2,20 +2,18 @@ package template.parsers;
 
 import template.algorithm.ApiResults;
 import template.controllers.Info;
-import template.framework.objects.UserOptions;
 
-public class IncomeParser {
-
-	public ApiResults[] parseIncome(Info info) {
+public class AgeParser {
+	
+	public void parseAge(Info info, ApiResults [] allResults) {
 		
-		String totalIncome = info.getTotalIncomeResults();
-		String bracketIncome = info.getIncomeBracketResults();
+		String totalAge = info.getTotalAgeResults();
+		String bracketAge = info.getAgeBracketResults();
 		
-		String[] totalArray = totalIncome.split(",");
-		String[] bracketArray = bracketIncome.split(",");
+		String [] totalArray = totalAge.split(",");
+		String [] bracketArray = bracketAge.split(",");
 		
-		ApiResults allResults [] = new ApiResults [totalArray.length / 4 -1];
-		int resultIndex = 0;		
+		int resultIndex = 0;
 		
 		for (int i = 4; i < totalArray.length; i++)
 		{
@@ -37,9 +35,7 @@ public class IncomeParser {
 			{
 				String total = totalArray[i].substring(2, totalArray[i].length()-1);
 				int temp = Integer.parseInt(total);
-				ApiResults apiResult = new ApiResults();
-				apiResult.setIncomeTotal(temp);
-				allResults[resultIndex] = apiResult;				
+				allResults[resultIndex].setAgeTotal(temp);			
 			}
 		}
 		
@@ -50,15 +46,14 @@ public class IncomeParser {
 			{
 				String bracket = bracketArray[i].substring(2, bracketArray[i].length()-1);
 				int temp = Integer.parseInt(bracket);
-				temp += allResults[resultIndex].getIncome();
-				allResults[resultIndex].setIncome(temp);
+				temp += allResults[resultIndex].getAge();
+				allResults[resultIndex].setAge(temp);
 				resultIndex++;
 				
 				if (resultIndex == allResults.length)
 					resultIndex = 0;
 			}
-		}	
-		
-		return allResults;
+		}		
 	}
+
 }

@@ -19,12 +19,12 @@ public class AgeAPIPage {
 		
 		// These are for the API calls within switch
 		website.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B19037_");
-		basicSite.append("&for=block+group:*&in=state:" + info.getState());
+		basicSite.append("&for=tract:*&in=state:" + info.getState());
 		basicSite.append("+county:" + info.getCounty()); /*+ "+tract:" + info.getTract());*/
 		
 		// This is the API call for the age in the area
 		totalAges.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B19037_001E"
-							+ "&for=block+group:*&in=state:" + info.getState()
+							+ "&for=tract:*&in=state:" + info.getState()
 							+ "+county:" + info.getCounty()); /* + "+tract:" + info.getTract());*/
 		
 		String totalSite = totalAges.toString();
