@@ -2,61 +2,58 @@ package template.algorithm;
 
 public class AlgorithmController
 {
-		
 	
-	
-	public int generateAlgorithm(ApiResults results)
+	public void generateAlgorithm(ApiResults results, ApiImportance apiStatic)
 	{
 		int score = 0;
 		int weightSum = 0;
 		
-		if(results.isIncomeIncluded())
+		if(apiStatic.isIncomeIncluded())
 		{
-			score += incomeAlgorithm(results);
-			weightSum += results.getIncomeWeight();
+			score += incomeAlgorithm(results, apiStatic);
+			weightSum += apiStatic.getIncomeWeight();
 		}
 		
-		if(results.isRelationIncluded())
+		if(apiStatic.isRelationIncluded())
 		{
-			score += relationAlgorithm(results);
-			weightSum += results.getRelationWeight();
+			score += relationAlgorithm(results, apiStatic);
+			weightSum += apiStatic.getRelationWeight();
 		}
 		
-		if(results.isAgeIncluded())
+		if(apiStatic.isAgeIncluded())
 		{
-			score += ageAlgorithm(results);
-			weightSum += results.getAgeWeight();
+			score += ageAlgorithm(results, apiStatic);
+			weightSum += apiStatic.getAgeWeight();
 		}
 		
-		if(results.isSchoolIncluded())
+		if(apiStatic.isSchoolIncluded())
 		{
-			score += schoolAlgorithm(results);
-			weightSum += results.getSchoolWeight();
+			score += schoolAlgorithm(results, apiStatic);
+			weightSum += apiStatic.getSchoolWeight();
 		}
 		
-		
-		return score/weightSum;
+		results.setAlgorithmValue(score/weightSum);
 	}
 	
-	private int incomeAlgorithm(ApiResults results)
+	private int incomeAlgorithm(ApiResults results, ApiImportance apiStatic)
 	{		
 		return results.getIncome()/results.getIncomeTotal()
-			   *results.getIncomeWeight();
+			   *apiStatic.getIncomeWeight();
 	}
 	
-	private int relationAlgorithm(ApiResults results)
+	private int relationAlgorithm(ApiResults results, ApiImportance apiStatic)
 	{
 		return results.getRelation()/results.getRelationTotal()
-			   *results.getRelationWeight();
+			   *apiStatic.getRelationWeight();
 	}
 	
-	private int ageAlgorithm(ApiResults results)
+	private int ageAlgorithm(ApiResults results, ApiImportance apiStatic)
 	{
 		return results.getAge()/results.getAgeTotal()
-			   *results.getAgeWeight();
+			   *apiStatic.getAgeWeight();
 	}
 	
-	private int schoolAlgorithm(ApiResults results)
+	private int schoolAlgorithm(ApiResults results, ApiImportance apiStatic)
 	{
 		int count = 0;
 		int sum = 0;
@@ -66,10 +63,7 @@ public class AlgorithmController
 			count++;
 		}
 			
-		return sum/count*results.getSchoolWeight();
+		return sum/count*apiStatic.getSchoolWeight();
 	}
-
-	
-	
 	
 }

@@ -17,8 +17,11 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import template.controllers.*;
+import template.algorithm.AlgorithmController;
+import template.algorithm.ApiImportance;
+import template.algorithm.ApiResults;
 import template.framework.objects.UserOptions;
+import template.parsers.*;
 
 @Controller 
 public class MainController extends WebMvcConfigurerAdapter {
@@ -75,6 +78,26 @@ public class MainController extends WebMvcConfigurerAdapter {
 		apiAgeCall.callAge(info, userOptions);
 		apiMarriedCall.callMarried(info, userOptions);
 		apiEducationCall.callEducation(info, userOptions);
+		
+		IncomeParser incomeParser = new IncomeParser();
+		AgeParser ageParser = new AgeParser();
+		MarriedParser marriedParser = new MarriedParser();
+		EducationParser educationParser = new EducationParser();
+		
+		ApiResults apiResults [] = incomeParser.parseIncome(info);
+		ageParser.parseAge(info, apiResults);
+		marriedParser.parseMarried(info, apiResults);
+		educationParser.parseEducation(info, apiResults);
+		
+//Start Algorithm		
+//		AlgorithmController algorithmController = null;
+//		ApiImportance apiStatic = new ApiImportance(userOptions);
+//		//call algorithm
+//		for(ApiResults result : apiResults)
+//		{
+//			algorithmController.generateAlgorithm(result, apiStatic);
+//		}
+//End Algorithm
 		
 		a.addAttribute("info", info);
 		

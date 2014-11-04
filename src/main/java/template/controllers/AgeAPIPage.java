@@ -18,14 +18,14 @@ public class AgeAPIPage {
 		StringBuilder basicSite = new StringBuilder();
 		
 		// These are for the API calls within switch
-		website.append("http://api.census.gov/data/2011/acs5?get=B19037_");
-		basicSite.append("&for=block+group:*&in=state:" + info.getState());
-		basicSite.append("+county:" + info.getCounty() + "+tract:" + info.getTract());
+		website.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B19037_");
+		basicSite.append("&for=tract:*&in=state:" + info.getState());
+		basicSite.append("+county:" + info.getCounty()); /*+ "+tract:" + info.getTract());*/
 		
 		// This is the API call for the age in the area
-		totalAges.append("http://api.census.gov/data/2011/acs5?get=B19037_001E"
-							+ "&for=block+group:*&in=state:" + info.getState()
-							+ "+county:" + info.getCounty() + "+tract:" + info.getTract());
+		totalAges.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B19037_001E"
+							+ "&for=tract:*&in=state:" + info.getState()
+							+ "+county:" + info.getCounty()); /* + "+tract:" + info.getTract());*/
 		
 		String totalSite = totalAges.toString();
 				
@@ -49,6 +49,7 @@ public class AgeAPIPage {
 							while (scan01.hasNext()) 
 								ageBracket += scan01.nextLine();
 							scan01.close();
+							break;
 							
 			case "25-44":	String call02 = website.toString();
 							call02 += "019E";
@@ -58,6 +59,7 @@ public class AgeAPIPage {
 							while (scan02.hasNext()) 
 								ageBracket += scan02.nextLine();
 							scan02.close();
+							break;
 							
 			case "45-64":	String call03 = website.toString();
 							call03 += "036E";
@@ -67,6 +69,7 @@ public class AgeAPIPage {
 							while (scan03.hasNext()) 
 								ageBracket += scan03.nextLine();
 							scan03.close();
+							break;
 							
 			case "65+":		String call04 = website.toString();
 							call04 += "053E";
@@ -75,7 +78,8 @@ public class AgeAPIPage {
 							Scanner scan04 = new Scanner(call04Url.openStream());
 							while (scan04.hasNext()) 
 								ageBracket += scan04.nextLine();
-							scan04.close();	
+							scan04.close();
+							break;
 		}
 		
 		info.setAgeBracketResults(ageBracket);

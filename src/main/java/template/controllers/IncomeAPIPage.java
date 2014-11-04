@@ -18,14 +18,14 @@ public class IncomeAPIPage {
 		StringBuilder basicSite = new StringBuilder();
 		
 		// These are for the API calls within switch
-		website.append("http://api.census.gov/data/2011/acs5?get=B19001_");
-		basicSite.append("&for=block+group:*&in=state:" + info.getState());
-		basicSite.append("+county:" + info.getCounty() + "+tract:" + info.getTract());
+		website.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B19001_");
+		basicSite.append("&for=tract:*&in=state:" + info.getState());
+		basicSite.append("+county:" + info.getCounty()); /* + "+tract:" + info.getTract())*/
 		
 		// This is the API call for the total income in the area
-		totalIncome.append("http://api.census.gov/data/2011/acs5?get=B19001_001E"
-							+ "&for=block+group:*&in=state:" + info.getState()
-							+ "+county:" + info.getCounty() + "+tract:" + info.getTract());
+		totalIncome.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&"
+							+ "get=B19001_001E&for=tract:*&in=state:" + info.getState()
+							+ "+county:" + info.getCounty()); /* + "+tract:" + info.getTract())*/
 		
 		String totalSite = totalIncome.toString();
 				
@@ -41,7 +41,8 @@ public class IncomeAPIPage {
 		
 		// Switch calls different APIs based on income range provided
 		switch (income) {
-			case "0-25":	String call01 = website.toString();
+			case "0-25":	
+							String call01 = website.toString();
 							call01 += "002E";
 							call01 += basicSite.toString();
 							URL call01Url = new URL(call01);
@@ -49,7 +50,6 @@ public class IncomeAPIPage {
 							while (scan01.hasNext()) 
 								incomeBracket += scan01.nextLine();
 							scan01.close();
-							incomeBracket += "\n";
 							
 							String call02 = website.toString();
 							call02 += "003E";
@@ -59,7 +59,6 @@ public class IncomeAPIPage {
 							while (scan02.hasNext()) 
 								incomeBracket += scan02.nextLine();
 							scan02.close();
-							incomeBracket += "\n";
 							
 							String call03 = website.toString();
 							call03 += "004E";
@@ -69,7 +68,6 @@ public class IncomeAPIPage {
 							while (scan03.hasNext()) 
 								incomeBracket += scan03.nextLine();
 							scan03.close();
-							incomeBracket += "\n";
 							
 							String call04 = website.toString();
 							call04 += "005E";
@@ -79,6 +77,7 @@ public class IncomeAPIPage {
 							while (scan04.hasNext()) 
 								incomeBracket += scan04.nextLine();
 							scan04.close();
+							break;
 							
 			case "25-50":	String call05 = website.toString();
 							call05 += "006E";
@@ -88,7 +87,6 @@ public class IncomeAPIPage {
 							while (scan05.hasNext()) 
 								incomeBracket += scan05.nextLine();
 							scan05.close();
-							incomeBracket += "\n";
 							
 							String call06 = website.toString();
 							call06 += "007E";
@@ -98,7 +96,6 @@ public class IncomeAPIPage {
 							while (scan06.hasNext()) 
 								incomeBracket += scan06.nextLine();
 							scan06.close();
-							incomeBracket += "\n";
 							
 							String call07 = website.toString();
 							call07 += "008E";
@@ -108,7 +105,6 @@ public class IncomeAPIPage {
 							while (scan07.hasNext()) 
 								incomeBracket += scan07.nextLine();
 							scan07.close();
-							incomeBracket += "\n";
 							
 							String call08 = website.toString();
 							call08 += "009E";
@@ -118,7 +114,6 @@ public class IncomeAPIPage {
 							while (scan08.hasNext()) 
 								incomeBracket += scan08.nextLine();
 							scan08.close();
-							incomeBracket += "\n";
 							
 							String call09 = website.toString();
 							call09 += "010E";
@@ -128,6 +123,7 @@ public class IncomeAPIPage {
 							while (scan09.hasNext()) 
 								incomeBracket += scan09.nextLine();
 							scan09.close();
+							break;
 							
 			case "50-75":	String call10 = website.toString();
 							call10 += "011E";
@@ -137,7 +133,6 @@ public class IncomeAPIPage {
 							while (scan10.hasNext()) 
 								incomeBracket += scan10.nextLine();
 							scan10.close();
-							incomeBracket += "\n";
 							
 							String call11 = website.toString();
 							call11 += "012E";
@@ -147,6 +142,7 @@ public class IncomeAPIPage {
 							while (scan11.hasNext()) 
 								incomeBracket += scan11.nextLine();
 							scan11.close();
+							break;
 							
 			case "75-100":	String call12 = website.toString();
 							call12 += "013E";
@@ -156,6 +152,7 @@ public class IncomeAPIPage {
 							while (scan12.hasNext()) 
 								incomeBracket += scan12.nextLine();
 							scan12.close();
+							break;
 							
 			case "100+":	String call13 = website.toString();
 							call13 += "014E";
@@ -165,7 +162,6 @@ public class IncomeAPIPage {
 							while (scan13.hasNext()) 
 								incomeBracket += scan13.nextLine();
 							scan13.close();
-							incomeBracket += "\n";
 							
 							String call14 = website.toString();
 							call14 += "015E";
@@ -175,7 +171,6 @@ public class IncomeAPIPage {
 							while (scan14.hasNext()) 
 								incomeBracket += scan14.nextLine();
 							scan14.close();
-							incomeBracket += "\n";
 							
 							String call15 = website.toString();
 							call15 += "016E";
@@ -185,7 +180,6 @@ public class IncomeAPIPage {
 							while (scan15.hasNext()) 
 								incomeBracket += scan15.nextLine();
 							scan15.close();
-							incomeBracket += "\n";
 							
 							String call16 = website.toString();
 							call16 += "017E";
@@ -194,7 +188,10 @@ public class IncomeAPIPage {
 							Scanner scan16 = new Scanner(call16Url.openStream());
 							while (scan16.hasNext()) 
 								incomeBracket += scan16.nextLine();
-							scan16.close();				
+							scan16.close();
+							break;
+							
+			default:		break;
 		}
 		
 		info.setIncomeBracketResults(incomeBracket);
