@@ -12,16 +12,28 @@ public class EducationParser {
 	public void parseEducation(Info info, ApiResults [] allResults) throws JSONException {
 		
 		String educationResults = info.getEducationResults();
-		String [] schoolResults = educationResults.split(":");
 		
-		for (int i = 0; i < schoolResults.length; i++)
+		JSONArray obj = new JSONArray(educationResults);
+		int[] allScores = new int [obj.length()];
+		int intScore;
+		
+		for (int i = 0; i < obj.length(); i++)
 		{
-			System.out.println(schoolResults[i].length() + " | " + schoolResults[i]);
-			
-			System.out.println(schoolResults[i].substring(0, 13).equals("\"Education.com "));
-			//if (schoolResults[i].substring(0, 14).equals("\"Education.com"))
-			//	System.out.println(schoolResults[i]);
+			JSONObject schoolObj = obj.getJSONObject(i).getJSONObject("school");
+			String score = schoolObj.getString("testrating_text");
+			if (score.equals(""))
+			{
+				intScore = -1;
+			}
+			else
+			{
+				score = score.substring(score.length() -1);
+				intScore = Integer.parseInt(score);
+			}
+			allScores[i] = intScore;
 		}
-
+		
+		for (int a = 0; a < allResults.length; a++)
+			allResults[a].setSchool(allScores);
 	}
 }
