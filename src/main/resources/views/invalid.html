@@ -77,14 +77,15 @@
             </div>
 			 <div class="form-group">
               <label for="">
-               	How Important is income? (1-not important, 5-very important)
+               	How Important is Income?
               </label>
               <select name="" id="" class="form-control" th:field="*{incomeImportance}">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option selected="true" value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
               </select>
             </div>
         	 <br>
@@ -100,16 +101,19 @@
             </div>
             <div class="form-group">
               <label for="">
-               	             How Important is the majority relationship status the area? (1-not important, 5-very important)
+               	             How Important is the majority Relationship Status the area?
               </label>
               <select name="" id="" class="form-control" th:field="*{relationshipStatusImportance}">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option selected="true" value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
               </select>
             </div>
+        	 <br>
+        	 <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
             <div class="form-group">
               <label for="">Age</label>
               <select name="" id="" class="form-control" th:field="*{age}">
@@ -121,14 +125,15 @@
             </div>
              <div class="form-group">
               <label for="">
-               	 How Important is average age of the area? (1-not important, 5-very important)
+               	 How Important is average Age of the area?
               </label>
               <select name="" id="" class="form-control" th:field="*{ageImportance}">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option selected="true" value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
               </select>
             </div>
         	 <br>
@@ -144,23 +149,28 @@
             
              <div class="form-group">
               <label for="">
-               	  How Important is age? (1-not important, 5-very important)
+               	  How Important is Community Type?
               </label>
               <select name="" id="" class="form-control" th:field="*{communityTypeImportance}">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option selected="true" value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
               </select>
+             </div>
         	 <br>
         	 <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
             <div class="form-group">
-              <label for="">Importance School System Quality</label>
-              <select name="" id="" class="form-control" th:field="*{schoolImportance}">
-                <option value="Very Important">Very Important</option>
-                <option value="Somewhat Important">Somewhat Important</option>
-                <option value="Not Very Important">Not Very Important</option>
+              <label for="">How important is School System Quality?</label>
+              <select name="SchoolI" id="" class="form-control" th:field="*{schoolImportance}">
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
               </select>
             </div>
             <hr style="height:3px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
