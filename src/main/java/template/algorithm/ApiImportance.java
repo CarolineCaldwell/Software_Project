@@ -5,6 +5,7 @@ import template.framework.objects.UserOptions;
 public class ApiImportance {
 	private int incomeWeight;
 	private int relationWeight;
+	private String relationStatus;
 	private int ageWeight;
 	private int schoolWeight;
 	
@@ -17,6 +18,7 @@ public class ApiImportance {
 			relationWeight = Integer.parseInt(useroption.getRelationshipStatusImportance());
 			ageWeight = Integer.parseInt(useroption.getAgeImportance());
 			schoolWeight = Integer.parseInt(useroption.getSchoolImportance());
+			relationStatus = "Single";
 		}
 		catch(NumberFormatException e)
 		{
@@ -72,6 +74,14 @@ public class ApiImportance {
 	}
 	public void setSchoolWeight(int schoolWeight) {
 		this.schoolWeight = schoolWeight;
+	}
+
+	public String getRelationStatus() {
+		return relationStatus;
+	}
+
+	public void setRelationStatus(String relationStatus) {
+		this.relationStatus = relationStatus;
 	}
 	
 	

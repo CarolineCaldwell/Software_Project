@@ -58,11 +58,12 @@ public class MainController extends WebMvcConfigurerAdapter {
 		System.out.println(userOptions.getRelationshipStatus());
 		System.out.println(userOptions.getAge());
 		System.out.println(userOptions.getCommunityType());
-		System.out.println(userOptions.getSchoolImportance());
+		
 		System.out.println(userOptions.getIncomeImportance());
 		System.out.println(userOptions.getRelationshipStatusImportance());
 		System.out.println(userOptions.getAgeImportance());
 		System.out.println(userOptions.getCommunityTypeImportance());
+		System.out.println(userOptions.getSchoolImportance());
 		
 		Info info = new Info();
 		LocationAPIPage apiLatCall = new LocationAPIPage();
@@ -89,17 +90,37 @@ public class MainController extends WebMvcConfigurerAdapter {
 		marriedParser.parseMarried(info, apiResults);
 		educationParser.parseEducation(info, apiResults);
 		
+		//for (int k = 0; k < apiResults.length; k++)
+		//	System.out.println(apiResults[k].getTract() + ", " + apiResults[k].getIncome() + ", " + apiResults[k].getIncomeTotal());
+		
 //Start Algorithm		
-//		AlgorithmController algorithmController = null;
-//		ApiImportance apiStatic = new ApiImportance(userOptions);
-//		//call algorithm
-//		for(ApiResults result : apiResults)
-//		{
-//			algorithmController.generateAlgorithm(result, apiStatic);
-//		}
+		AlgorithmController algorithmController = new AlgorithmController();
+		ApiImportance apiStatic = new ApiImportance(userOptions);
+		
+		//System.out.println(apiStatic.getAgeWeight() + " " + apiStatic.getIncomeWeight() + " " + apiStatic.getRelationStatus() + " " + apiStatic.getRelationWeight() + " " + 
+		//					apiStatic.getSchoolWeight());
+		
+		//call algorithm
+		for(int i = 0; i < apiResults.length; i++)
+		{
+			//System.out.println(i);
+			algorithmController.generateAlgorithm(apiResults[i], apiStatic);
+			//System.out.println(apiResults[i].getAlgorithmValue());
+		}
 //End Algorithm
 		
-		a.addAttribute("info", info);
+//Print Algorithm Values for all Tracts
+		StringBuilder myString = new StringBuilder(); 
+		
+		for(int i = 0; i < apiResults.length; i++)
+		{
+			System.out.println(apiResults[i].getTract() + "  " + apiResults[i].getAlgorithmValue());
+			myString.append("     Tract: " + Integer.toString(apiResults[i].getTract()) + " Score: " + Double.toString(apiResults[i].getAlgorithmValue()));
+
+		}
+//End Print
+		
+		a.addAttribute("myString", myString);
 		
 		return "results";
 	}

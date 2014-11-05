@@ -18,7 +18,7 @@ public class ApiResults
 	private int[] school;
 	//private int schoolWeight;
 	//private boolean schoolIncluded;
-	private int algorithmValue;
+	private double algorithmValue;
 	
 	public ApiResults() {
 		tract = 0;
@@ -90,13 +90,13 @@ public class ApiResults
 	}
 
 
-	public int getAlgorithmValue() {
+	public double getAlgorithmValue() {
 		return algorithmValue;
 	}
 
 
-	public void setAlgorithmValue(int algorithmValue) {
-		this.algorithmValue = algorithmValue;
+	public void setAlgorithmValue(double d) {
+		this.algorithmValue = d;
 	}
 	
 }

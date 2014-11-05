@@ -12,7 +12,9 @@ public class UserOptions {
 	    private String relationshipStatus;
 	    private String age;
 	    private String communityType;
-	    private String schoolImportance;
+	    private String results;
+
+		private String schoolImportance;
 	    private String incomeImportance;
 	    private String relationshipStatusImportance;
 	    private String ageImportance;
@@ -39,7 +41,7 @@ public class UserOptions {
 		}
 		public String getAge() {
 			return age;
-		}
+		}	   
 		public void setAge(String age) {
 			this.age = age;
 		}
@@ -48,6 +50,12 @@ public class UserOptions {
 		}
 		public void setCommunityType(String communityType) {
 			this.communityType = communityType;
+		} 
+		public String getResults() {
+			return results;
+		}
+		public void setResults(String results) {
+			this.results = results;
 		}
 		public String getSchoolImportance() {
 			return schoolImportance;
