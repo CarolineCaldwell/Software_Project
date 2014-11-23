@@ -1,4 +1,4 @@
-package template.controllers;
+package template.api;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,7 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 //import org.springframework.web.client.RestTemplate;
 
-import template.controllers.Info;
+
+import template.framework.objects.Info;
 
 
 public class LocationFCCPage {

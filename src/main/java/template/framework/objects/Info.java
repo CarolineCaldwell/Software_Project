@@ -1,4 +1,4 @@
-package template.controllers;
+package template.framework.objects;
 
 public class Info {
 	
@@ -20,7 +20,7 @@ public class Info {
 	private String totalNotMarriedResults;
 	private String educationResults;
 	
-	Info() {
+	public Info() {
 		numTracts = 0;
 		location = "";
 		lat = "";

@@ -20,6 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import template.algorithm.AlgorithmController;
 import template.algorithm.ApiImportance;
 import template.algorithm.ApiResults;
+import template.api.AgeAPIPage;
+import template.api.EducationAPIPage;
+import template.api.IncomeAPIPage;
+import template.api.LocationAPIPage;
+import template.api.LocationFCCPage;
+import template.api.MarriedAPIPage;
+import template.framework.objects.Info;
 import template.framework.objects.UserOptions;
 import template.parsers.*;
 
@@ -115,7 +122,7 @@ public class MainController extends WebMvcConfigurerAdapter {
 		for(int i = 0; i < apiResults.length; i++)
 		{
 			System.out.println(apiResults[i].getTract() + "  " + apiResults[i].getAlgorithmValue());
-			myString.append("     Tract: " + Integer.toString(apiResults[i].getTract()) + " Score: " + Double.toString(apiResults[i].getAlgorithmValue()));
+			myString.append("Tract: " + Integer.toString(apiResults[i].getTract()) + " Score: " + Double.toString(apiResults[i].getAlgorithmValue()));
 
 		}
 //End Print
