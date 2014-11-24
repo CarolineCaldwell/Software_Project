@@ -9,6 +9,7 @@ public class Info {
 	private String lat;
 	private String FIPS;
 	private String state;
+	private String stateAbbrev;
 	private String county;
 	private String tract;
 	private String areaType;
@@ -28,6 +29,7 @@ public class Info {
 		lng = "";
 		FIPS = "";
 		state = "";
+		stateAbbrev = "";
 		county = "";
 		tract = "";
 		//////////////////////////
@@ -88,6 +90,14 @@ public class Info {
 		this.state = state;
 	}
 
+	public String getStateAbbrev() {
+		return stateAbbrev;
+	}
+
+	public void setStateAbbrev(String stateAbbrev) {
+		this.stateAbbrev = stateAbbrev;
+	}
+	
 	public String getCounty() {
 		return county;
 	}

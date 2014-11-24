@@ -9,6 +9,7 @@ public class ApiImportance {
 	private int ageWeight;
 	private int schoolWeight;
 	private int areaWeight;
+	private String areaType;
 	
 	public ApiImportance(UserOptions useroption)
 	{
@@ -21,6 +22,7 @@ public class ApiImportance {
 			schoolWeight = Integer.parseInt(useroption.getSchoolImportance());
 			relationStatus = "Single";
 			areaWeight = Integer.parseInt(useroption.getCommunityTypeImportance());
+			setAreaType(useroption.getCommunityType());
 		}
 		catch(NumberFormatException e)
 		{
@@ -93,5 +95,13 @@ public class ApiImportance {
 	}
 	public void setAreaWeight(int areaWeight) {
 		this.areaWeight = areaWeight;
+	}
+
+	public String getAreaType() {
+		return areaType;
+	}
+
+	public void setAreaType(String areaType) {
+		this.areaType = areaType;
 	}
 }

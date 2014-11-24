@@ -20,9 +20,13 @@ public class EducationAPIPage {
 		if (info.getLocation().matches("[0-9]*") ) 
 			website.append("zip=" + info.getLocation());
 		else 
+		{
 			website.append("city=" + info.getLocation());
+			website.append("&state=" + info.getStateAbbrev());
+		}
 		
 		String site = website.toString();
+		
 		URL url = new URL(site);
 		Scanner scan = new Scanner(url.openStream());
 		String content = new String();

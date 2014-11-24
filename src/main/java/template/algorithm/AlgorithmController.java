@@ -11,6 +11,7 @@ public class AlgorithmController
 	{
 		double score = 0;
 		double weightSum = 0;
+		double value = 0;
 		
 		if(apiStatic.isIncomeIncluded())
 		{
@@ -36,9 +37,21 @@ public class AlgorithmController
 			weightSum += apiStatic.getSchoolWeight();
 		}
 		
-		//System.out.println("In Alg: " + score/weightSum);
+		if(apiStatic.isAreaIncluded())
+		{
+			score += areaAlgorithm(results, apiStatic);
+			weightSum += apiStatic.getAreaWeight();
+		}
 		
-		results.setAlgorithmValue(score/weightSum);
+		
+		
+		if(weightSum == 0)
+			value = 0;
+		else
+			value = score / weightSum;
+		
+		//System.out.println("In Alg: " + value);
+		results.setAlgorithmValue(value);
 	}
 	
 	private double incomeAlgorithm(ApiResults results, ApiImportance apiStatic)
@@ -49,6 +62,7 @@ public class AlgorithmController
 		double value = results.getIncome();
 		value = value / results.getIncomeTotal();
 		value = value * apiStatic.getIncomeWeight();
+		//System.out.println(" Income: " + (value / apiStatic.getIncomeWeight()));
 		return value;
 	}
 	
@@ -56,19 +70,23 @@ public class AlgorithmController
 	{
 		if(results.getRelationTotal() == 0)
 			return 0;
+		
 		double value;
-		if(apiStatic.getRelationStatus() == "Single")
+		
+		if(apiStatic.getRelationStatus().equals("Single"))
 		{
 			value = results.getRelationTotal();
 			value = value - results.getRelation();
 			value = value / results.getRelationTotal();
 			value = value * apiStatic.getRelationWeight();
+			//System.out.println(" Relation: " + (value / apiStatic.getRelationWeight()));
 			return value;
 		}	
 		
 		value = results.getRelation();
 		value = value / results.getRelationTotal();
 		value = value * apiStatic.getRelationWeight();
+		//System.out.println(" Relation: " + (value / apiStatic.getRelationWeight()));
 		return value;
 	}
 	
@@ -76,10 +94,11 @@ public class AlgorithmController
 	{
 		if(results.getAgeTotal() == 0)
 			return 0;
+		
 		double value = results.getAge();
 		value = value / results.getAgeTotal();
 		value = value * apiStatic.getAgeWeight();
-		
+		//System.out.println(" Age: " + (value / apiStatic.getAgeWeight()));
 		return value;
 	}
 	
@@ -87,6 +106,8 @@ public class AlgorithmController
 	{
 		double count = 0;
 		double sum = 0;
+		double value = 0;
+		
 		for(int school : results.getSchool())
 		{
 			if(school != -1)
@@ -95,8 +116,28 @@ public class AlgorithmController
 				count++;
 			}
 		}
-			
-		return (sum/count*apiStatic.getSchoolWeight());
+		
+		if(count == 0)
+			value = 0;
+		else
+			value = (sum/count) / 10 * apiStatic.getSchoolWeight();
+		
+		//System.out.println(" School: " + (value / 10 / apiStatic.getSchoolWeight()));
+		return value;
+	}
+	
+	private double areaAlgorithm(ApiResults results, ApiImportance apiStatic)
+	{
+		double value = 0;
+		
+		if(results.getAreaType().equals(apiStatic.getAreaType()))
+			value = 1;
+		else
+			value = .75;
+		
+		value = value * apiStatic.getAreaWeight();
+		//System.out.println(" Area: " + (value / apiStatic.getAreaWeight()));
+		return value;
 	}
 	
 }

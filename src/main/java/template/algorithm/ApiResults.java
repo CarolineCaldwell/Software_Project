@@ -22,6 +22,10 @@ public class ApiResults
 	private double algorithmValue;
 	private String areaType;
 	
+	private double centerX;
+	private double centerY;
+	private double radius;
+	
 	public ApiResults() {
 		tract = 0;
 		income = 0;
@@ -40,6 +44,10 @@ public class ApiResults
 		//schoolWeight = 0;
 		//schoolIncluded = true;
 		areaType = "";
+		
+		centerX = 0;
+		centerY = 0;
+		radius = 0;
 	}
 	
 	
@@ -102,5 +110,35 @@ public class ApiResults
 	}
 	public void setAreaType(String areaType) {
 		this.areaType = areaType;
+	}
+
+
+	public double getCenterX() {
+		return centerX;
+	}
+
+
+	public void setCenterX(double centerX) {
+		this.centerX = centerX;
+	}
+
+
+	public double getCenterY() {
+		return centerY;
+	}
+
+
+	public void setCenterY(double centerY) {
+		this.centerY = centerY;
+	}
+
+
+	public double getRadius() {
+		return radius;
+	}
+
+
+	public void setRadius(double radius) {
+		this.radius = radius;
 	}
 }
