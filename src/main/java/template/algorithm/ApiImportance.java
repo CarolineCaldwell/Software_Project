@@ -8,6 +8,7 @@ public class ApiImportance {
 	private String relationStatus;
 	private int ageWeight;
 	private int schoolWeight;
+	private int areaWeight;
 	
 	public ApiImportance(UserOptions useroption)
 	{
@@ -19,6 +20,7 @@ public class ApiImportance {
 			ageWeight = Integer.parseInt(useroption.getAgeImportance());
 			schoolWeight = Integer.parseInt(useroption.getSchoolImportance());
 			relationStatus = "Single";
+			areaWeight = Integer.parseInt(useroption.getCommunityTypeImportance());
 		}
 		catch(NumberFormatException e)
 		{
@@ -50,7 +52,12 @@ public class ApiImportance {
 			return false;
 		return true;
 	}
-	
+	public boolean isAreaIncluded()
+	{
+		if(areaWeight ==0)
+			return false;
+		return true;
+	}
 	public int getIncomeWeight() {
 		return incomeWeight;
 	}
@@ -75,14 +82,16 @@ public class ApiImportance {
 	public void setSchoolWeight(int schoolWeight) {
 		this.schoolWeight = schoolWeight;
 	}
-
 	public String getRelationStatus() {
 		return relationStatus;
 	}
-
 	public void setRelationStatus(String relationStatus) {
 		this.relationStatus = relationStatus;
 	}
-	
-	
+	public int getAreaWeight() {
+		return areaWeight;
+	}
+	public void setAreaWeight(int areaWeight) {
+		this.areaWeight = areaWeight;
+	}
 }
