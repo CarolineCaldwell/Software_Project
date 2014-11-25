@@ -101,9 +101,8 @@ public class MainController extends WebMvcConfigurerAdapter {
 		areaParser.parseArea(apiResults);
 		
 		// These need to be uncommented, but they are SLOW
-		//LocationToMap locationToMap = new LocationToMap();
-		//locationToMap.mapToLocation(info, apiResults);
-		
+		LocationToMap locationToMap = new LocationToMap();
+		locationToMap.mapToLocation(info, apiResults);
 		
 		//for (int k = 0; k < apiResults.length; k++)
 		//	System.out.println(apiResults[k].getTract() + ", " + apiResults[k].getIncome() + ", " + apiResults[k].getIncomeTotal());
@@ -123,6 +122,24 @@ public class MainController extends WebMvcConfigurerAdapter {
 			//System.out.println(apiResults[i].getAlgorithmValue());
 		}
 //End Algorithm
+		
+		double totalValue = 0;
+		
+		double heatMapInfo [] = new double[apiResults.length * 3];
+		for(int k = 0; k < apiResults.length; k++)
+		{
+			//System.out.println("Y: " + apiResults[k].getCenterY() + " X: " + apiResults[k].getCenterX() + " Weight: " + apiResults[k].getAlgorithmValue());
+			heatMapInfo[k] = apiResults[k].getCenterY();
+			heatMapInfo[k + 1] = apiResults[k].getCenterX();
+			double temp = apiResults[k].getAlgorithmValue() * 10;
+			heatMapInfo[k + 2] = Math.pow(2.0, temp);
+			System.out.println("Y: " + heatMapInfo[k] + " X: " + heatMapInfo[k + 1] + " Weight: " + heatMapInfo[k + 2]);
+			
+			totalValue += apiResults[k].getRadius();
+			
+		}
+		System.out.println("USE THIS RADIUS IN M: " + (totalValue / apiResults.length));
+					
 		
 //Print Algorithm Values for all Tracts
 		StringBuilder myString = new StringBuilder(); 

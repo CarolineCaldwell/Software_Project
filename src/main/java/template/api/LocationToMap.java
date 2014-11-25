@@ -47,7 +47,7 @@ public class LocationToMap {
 			double centerX = (minX + maxX) / 2;
 			double centerY = (minY + maxY) / 2;
 			double radius  = (maxY - minY) / 2;
-			radius = (radius * 364560) / 5280;
+			radius = (radius * 364560) * 12 * 2.54 / 100;
 			
 			allResults[a].setCenterX(centerX);
 			allResults[a].setCenterY(centerY);
