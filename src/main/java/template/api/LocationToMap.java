@@ -52,9 +52,6 @@ public class LocationToMap {
 			allResults[a].setCenterX(centerX);
 			allResults[a].setCenterY(centerY);
 			allResults[a].setRadius(radius);
-			
-			//System.out.println(centerX + " " + centerY + " " + radius);
 		}
-		System.out.println("DONE");
 	}
 }

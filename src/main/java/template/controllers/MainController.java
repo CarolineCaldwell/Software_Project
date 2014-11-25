@@ -137,6 +137,6 @@ public class MainController extends WebMvcConfigurerAdapter {
 		
 		a.addAttribute("myString", myString);
 		
-		return "results";
+		return "map";
 	}
 }
