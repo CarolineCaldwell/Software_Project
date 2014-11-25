@@ -1,7 +1,7 @@
 package template.parsers;
 
 import template.algorithm.ApiResults;
-import template.controllers.Info;
+import template.framework.objects.Info;
 import template.framework.objects.UserOptions;
 
 public class IncomeParser {

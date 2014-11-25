@@ -1,10 +1,9 @@
-package template.controllers;
+package template.api;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
-import template.controllers.Info;
 import template.framework.objects.*;
 
 public class AgeAPIPage {

@@ -3,6 +3,7 @@ package template.algorithm;
 public class ApiResults 
 {
 	private int tract;
+	//private int population;
 	private int income;
 	private int incomeTotal;
 	//private int incomeWeight;
@@ -19,6 +20,11 @@ public class ApiResults
 	//private int schoolWeight;
 	//private boolean schoolIncluded;
 	private double algorithmValue;
+	private String areaType;
+	
+	private double centerX;
+	private double centerY;
+	private double radius;
 	
 	public ApiResults() {
 		tract = 0;
@@ -37,6 +43,11 @@ public class ApiResults
 		//ageIncluded = true;
 		//schoolWeight = 0;
 		//schoolIncluded = true;
+		areaType = "";
+		
+		centerX = 0;
+		centerY = 0;
+		radius = 0;
 	}
 	
 	
@@ -45,7 +56,7 @@ public class ApiResults
 	}
 	public void setTract(int tract) {
 		this.tract = tract;
-	}	
+	}
 	public int getIncome() {
 		return income;
 	}
@@ -88,15 +99,46 @@ public class ApiResults
 	public void setSchool(int[] school) {
 		this.school = school;
 	}
-
-
 	public double getAlgorithmValue() {
 		return algorithmValue;
 	}
-
-
 	public void setAlgorithmValue(double d) {
 		this.algorithmValue = d;
 	}
-	
+	public String getAreaType() {
+		return areaType;
+	}
+	public void setAreaType(String areaType) {
+		this.areaType = areaType;
+	}
+
+
+	public double getCenterX() {
+		return centerX;
+	}
+
+
+	public void setCenterX(double centerX) {
+		this.centerX = centerX;
+	}
+
+
+	public double getCenterY() {
+		return centerY;
+	}
+
+
+	public void setCenterY(double centerY) {
+		this.centerY = centerY;
+	}
+
+
+	public double getRadius() {
+		return radius;
+	}
+
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
 }

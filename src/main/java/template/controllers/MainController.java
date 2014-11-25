@@ -20,6 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import template.algorithm.AlgorithmController;
 import template.algorithm.ApiImportance;
 import template.algorithm.ApiResults;
+import template.api.AgeAPIPage;
+import template.api.EducationAPIPage;
+import template.api.IncomeAPIPage;
+import template.api.LocationAPIPage;
+import template.api.LocationFCCPage;
+import template.api.LocationToMap;
+import template.api.MarriedAPIPage;
+import template.framework.objects.Info;
 import template.framework.objects.UserOptions;
 import template.parsers.*;
 
@@ -84,11 +92,18 @@ public class MainController extends WebMvcConfigurerAdapter {
 		AgeParser ageParser = new AgeParser();
 		MarriedParser marriedParser = new MarriedParser();
 		EducationParser educationParser = new EducationParser();
+		AreaParser areaParser = new AreaParser();
 		
 		ApiResults apiResults [] = incomeParser.parseIncome(info);
 		ageParser.parseAge(info, apiResults);
 		marriedParser.parseMarried(info, apiResults);
-		educationParser.parseEducation(info, apiResults);
+		educationParser.parseEducation(info, apiResults);		
+		areaParser.parseArea(apiResults);
+		
+		// These need to be uncommented, but they are SLOW
+		//LocationToMap locationToMap = new LocationToMap();
+		//locationToMap.mapToLocation(info, apiResults);
+		
 		
 		//for (int k = 0; k < apiResults.length; k++)
 		//	System.out.println(apiResults[k].getTract() + ", " + apiResults[k].getIncome() + ", " + apiResults[k].getIncomeTotal());
@@ -114,14 +129,14 @@ public class MainController extends WebMvcConfigurerAdapter {
 		
 		for(int i = 0; i < apiResults.length; i++)
 		{
-			System.out.println(apiResults[i].getTract() + "  " + apiResults[i].getAlgorithmValue());
-			myString.append("     Tract: " + Integer.toString(apiResults[i].getTract()) + " Score: " + Double.toString(apiResults[i].getAlgorithmValue()));
+			//System.out.println(apiResults[i].getTract() + "  " + apiResults[i].getAlgorithmValue());
+			myString.append("Tract: " + Integer.toString(apiResults[i].getTract()) + " Score: " + Double.toString(apiResults[i].getAlgorithmValue()));
 
 		}
 //End Print
 		
 		a.addAttribute("myString", myString);
 		
-		return "results";
+		return "map";
 	}
 }

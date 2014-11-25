@@ -1,4 +1,4 @@
-package template.controllers;
+package template.framework.objects;
 
 public class Info {
 	
@@ -9,8 +9,10 @@ public class Info {
 	private String lat;
 	private String FIPS;
 	private String state;
+	private String stateAbbrev;
 	private String county;
-	private String tract;	// Currently not used
+	private String tract;
+	private String areaType;
 	//////////////////////////
 	private String totalIncomeResults;
 	private String incomeBracketResults;
@@ -20,13 +22,14 @@ public class Info {
 	private String totalNotMarriedResults;
 	private String educationResults;
 	
-	Info() {
+	public Info() {
 		numTracts = 0;
 		location = "";
 		lat = "";
 		lng = "";
 		FIPS = "";
 		state = "";
+		stateAbbrev = "";
 		county = "";
 		tract = "";
 		//////////////////////////
@@ -87,6 +90,14 @@ public class Info {
 		this.state = state;
 	}
 
+	public String getStateAbbrev() {
+		return stateAbbrev;
+	}
+
+	public void setStateAbbrev(String stateAbbrev) {
+		this.stateAbbrev = stateAbbrev;
+	}
+	
 	public String getCounty() {
 		return county;
 	}
@@ -103,7 +114,13 @@ public class Info {
 		this.tract = tract;
 	}
 
-	// These are TEMPORARY FUNCTIONS!!!!
+	public String getAreaType() {
+		return areaType;
+	}
+
+	public void setAreaType(String areaType) {
+		this.areaType = areaType;
+	}
 	
 	public String getTotalIncomeResults() {
 		return totalIncomeResults;

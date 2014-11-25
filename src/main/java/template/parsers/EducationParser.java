@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import template.algorithm.ApiResults;
-import template.controllers.Info;
+import template.framework.objects.Info;
 
 public class EducationParser {
 
