@@ -61,7 +61,14 @@
           	    <p th:text="'Age:  ' + ${userOptions.age}" />
           	    <p th:text="'Community Type:  ' + ${userOptions.communityType}" />
           	    <p th:text="'School Importance:  ' + ${userOptions.schoolImportance}" />
-  		     	<p th:text="'Tract and Score:  ' +${myString}" />
+  		     	<p th:text="'FIPS Code:  ' + ${info.FIPS}" />
+  		     	<p th:text="'All Income Results:  ' + ${info.totalIncomeResults}" />
+  		     	<p th:text="'Income Bracket Results:  ' + ${info.incomeBracketResults}" />
+  		     	<p th:text="'All Age Results:  ' + ${info.totalAgeResults}" />
+  		     	<p th:text="'Age Bracket Results:  ' + ${info.ageBracketResults}" />
+  		     	<p th:text="'Married Results:  ' + ${info.totalMarriedResults}" />
+  		     	<p th:text="'Not Married Results:  ' + ${info.totalNotMarriedResults}" />
+  		     	<p th:text="'Education Results:  ' + ${info.educationResults}" />
    			</div> 
             </div>
       </div>

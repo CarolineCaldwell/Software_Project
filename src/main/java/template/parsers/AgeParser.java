@@ -17,21 +17,7 @@ public class AgeParser {
 		
 		for (int i = 4; i < totalArray.length; i++)
 		{
-			if (totalArray[i].substring(totalArray[i].length()-2).equals( "\"]"))
-			{
-				String tract = totalArray[i].substring(1,totalArray[i].length()-2);
-				int temp = Integer.parseInt(tract);
-				allResults[resultIndex].setTract(temp);
-				resultIndex++;
-			}
-			else if (totalArray[i].substring(totalArray[i].length()-3).equals( "\"]]"))
-			{
-				String tract = totalArray[i].substring(1,totalArray[i].length()-3);
-				int temp = Integer.parseInt(tract);
-				allResults[resultIndex].setTract(temp);
-				resultIndex++;
-			}
-			else if (totalArray[i].substring(0,2).equals( "[\""))
+			if (totalArray[i].substring(0,2).equals( "[\""))
 			{
 				String total = totalArray[i].substring(2, totalArray[i].length()-1);
 				int temp = Integer.parseInt(total);

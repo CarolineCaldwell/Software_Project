@@ -2,7 +2,6 @@ package template.parsers;
 
 import template.algorithm.ApiResults;
 import template.framework.objects.Info;
-import template.framework.objects.UserOptions;
 
 public class IncomeParser {
 
@@ -22,15 +21,13 @@ public class IncomeParser {
 			if (totalArray[i].substring(totalArray[i].length()-2).equals( "\"]"))
 			{
 				String tract = totalArray[i].substring(1,totalArray[i].length()-2);
-				int temp = Integer.parseInt(tract);
-				allResults[resultIndex].setTract(temp);
+				allResults[resultIndex].setTract(tract);
 				resultIndex++;
 			}
 			else if (totalArray[i].substring(totalArray[i].length()-3).equals( "\"]]"))
 			{
 				String tract = totalArray[i].substring(1,totalArray[i].length()-3);
-				int temp = Integer.parseInt(tract);
-				allResults[resultIndex].setTract(temp);
+				allResults[resultIndex].setTract(tract);
 				resultIndex++;
 			}
 			else if (totalArray[i].substring(0,2).equals( "[\""))

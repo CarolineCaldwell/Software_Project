@@ -1,8 +1,8 @@
 package template.algorithm;
 
-public class ApiResults 
+public class ApiResults implements Comparable<ApiResults>
 {
-	private int tract;
+	private String tract;
 	//private int population;
 	private int income;
 	private int incomeTotal;
@@ -27,7 +27,7 @@ public class ApiResults
 	private double radius;
 	
 	public ApiResults() {
-		tract = 0;
+		tract = "";
 		income = 0;
 		incomeTotal = 0;
 		//incomeWeight = 0;
@@ -50,11 +50,25 @@ public class ApiResults
 		radius = 0;
 	}
 	
+	public void copyResult(ApiResults a) {
+		this.tract = a.getTract();
+		this.income = a.getIncome();
+		this.incomeTotal= a.getIncomeTotal();
+		this.relation = a.getRelation();
+		this.relationTotal = a.getRelationTotal();
+		this.age = a.getAge();
+		this.ageTotal = a.getAgeTotal();
+		this.algorithmValue = a.getAlgorithmValue();
+		this.areaType = a.getAreaType();
+		this.centerX = a.getCenterX();
+		this.centerY = a.getCenterY();
+		this.radius = a.getRadius();
+	}
 	
-	public int getTract() {
+	public String getTract() {
 		return tract;
 	}
-	public void setTract(int tract) {
+	public void setTract(String tract) {
 		this.tract = tract;
 	}
 	public int getIncome() {
@@ -141,4 +155,20 @@ public class ApiResults
 	public void setRadius(double radius) {
 		this.radius = radius;
 	}
+	
+	@Override
+	public int compareTo(ApiResults arg0) {
+		
+		if (this.getAlgorithmValue() < arg0.getAlgorithmValue())
+			return 1;
+		else if (this.getAlgorithmValue() > arg0.getAlgorithmValue())
+			return -1;
+		else
+			return 0;
+		//return (int) ((this.getAlgorithmValue()-arg0.getAlgorithmValue()) * 100);
+	}
+	
 }
+
+
+	

@@ -1,3 +1,9 @@
+/*	File Name:		Main Controller.java
+ * 	Author:			Unknown
+ * 	Description:	
+ * 	
+ */
+
 package template.controllers;
 
 
@@ -100,59 +106,47 @@ public class MainController extends WebMvcConfigurerAdapter {
 		educationParser.parseEducation(info, apiResults);		
 		areaParser.parseArea(apiResults);
 		
-		// These need to be uncommented, but they are SLOW
-		LocationToMap locationToMap = new LocationToMap();
-		locationToMap.mapToLocation(info, apiResults);
-		
-		//for (int k = 0; k < apiResults.length; k++)
-		//	System.out.println(apiResults[k].getTract() + ", " + apiResults[k].getIncome() + ", " + apiResults[k].getIncomeTotal());
-		
 //Start Algorithm		
 		AlgorithmController algorithmController = new AlgorithmController();
 		ApiImportance apiStatic = new ApiImportance(userOptions);
 		
-		//System.out.println(apiStatic.getAgeWeight() + " " + apiStatic.getIncomeWeight() + " " + apiStatic.getRelationStatus() + " " + apiStatic.getRelationWeight() + " " + 
-		//					apiStatic.getSchoolWeight());
-		
 		//call algorithm
 		for(int i = 0; i < apiResults.length; i++)
 		{
-			//System.out.println(i);
 			algorithmController.generateAlgorithm(apiResults[i], apiStatic);
-			//System.out.println(apiResults[i].getAlgorithmValue());
 		}
 //End Algorithm
+				
+		Arrays.sort(apiResults);
+		int numPoints = 50;
+		ApiResults topResults[] = new ApiResults [numPoints];
+		
+		for (int b = 0; b < numPoints; b++) {
+			ApiResults temp = new ApiResults();
+			temp.copyResult(apiResults[b]);
+			topResults[b] = temp;
+		}
+		
+		LocationToMap locationToMap = new LocationToMap();
+		locationToMap.mapToLocation(info, topResults);
 		
 		double totalValue = 0;
 		
-		double heatMapInfo [] = new double[apiResults.length * 3];
-		for(int k = 0; k < apiResults.length; k++)
+		double[] heatMapInfo = new double[numPoints * 3];
+		int index = 0;
+		
+		for(int k = 0; k < numPoints; k++)
 		{
-			//System.out.println("Y: " + apiResults[k].getCenterY() + " X: " + apiResults[k].getCenterX() + " Weight: " + apiResults[k].getAlgorithmValue());
-			heatMapInfo[k] = apiResults[k].getCenterY();
-			heatMapInfo[k + 1] = apiResults[k].getCenterX();
-			double temp = apiResults[k].getAlgorithmValue() * 10;
-			heatMapInfo[k + 2] = Math.pow(2.0, temp);
-			System.out.println("Y: " + heatMapInfo[k] + " X: " + heatMapInfo[k + 1] + " Weight: " + heatMapInfo[k + 2]);
-			
-			totalValue += apiResults[k].getRadius();
+			heatMapInfo[index] = topResults[k].getCenterY();
+			heatMapInfo[index + 1] = topResults[k].getCenterX();
+			heatMapInfo[index + 2] = topResults[k].getAlgorithmValue() * 100;
+			index+=3;
+			totalValue += topResults[k].getRadius();
 			
 		}
-		System.out.println("USE THIS RADIUS IN M: " + (totalValue / apiResults.length));
-					
+		System.out.println("USE THIS RADIUS IN M: " + (totalValue / topResults.length));
 		
-//Print Algorithm Values for all Tracts
-		StringBuilder myString = new StringBuilder(); 
-		
-		for(int i = 0; i < apiResults.length; i++)
-		{
-			//System.out.println(apiResults[i].getTract() + "  " + apiResults[i].getAlgorithmValue());
-			myString.append("Tract: " + Integer.toString(apiResults[i].getTract()) + " Score: " + Double.toString(apiResults[i].getAlgorithmValue()));
-
-		}
-//End Print
-		
-		a.addAttribute("myString", myString);
+		a.addAttribute("heatMapInfo", heatMapInfo);
 		
 		return "map";
 	}

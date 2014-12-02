@@ -15,7 +15,6 @@ public class LocationToMap {
 
 	public void mapToLocation (Info info, ApiResults allResults[]) throws IOException, JSONException {
 		
-		System.out.println(allResults.length);
 		StringBuilder website = new StringBuilder();
 		website.append("http://www.broadbandmap.gov/broadbandmap/census/tract/fips/");
 		website.append(info.getState());
@@ -23,6 +22,7 @@ public class LocationToMap {
 		
 		for (int a = 0; a < allResults.length; a++)
 		{
+			
 			String fullWebsite = website.toString();
 			fullWebsite += allResults[a].getTract();
 			fullWebsite += "?format=json";
