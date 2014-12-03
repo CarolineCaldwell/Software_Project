@@ -111,11 +111,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </head>
 
   <body>
-    <div id="panel">
-      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button onclick="changeGradient()">Change gradient</button>
-      <button onclick="changeRadius()">Change radius</button>
-      <button onclick="changeOpacity()">Change opacity</button>
+    <div id="panel" style="position: fixed; top: 30px; right: 50;">
+      <button onclick="toggleHeatmap()" class="btn btn-primary ">Toggle Heatmap</button>
+      <button onclick="changeGradient()" class="btn btn-primary ">Change gradient</button>
+      <button onclick="changeRadius()" class="btn  btn-primary ">Change radius</button>
+      <button onclick="changeOpacity()" class="btn btn-primary">Change opacity</button>
     </div>
     <div class="map-outer-container">
 	<div class="map-container">
