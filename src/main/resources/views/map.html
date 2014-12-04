@@ -1,107 +1,249 @@
-<!doctype html>
-<html class="no-js">
+<!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8">
-    <title>denfinder</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    
-    <!-- build:css styles/main.css -->
+    <link rel="shortcut icon" href="http://i.imgur.com/QFaOCVd.png" >
+    <title>Heatmaps</title>
+    <style>
+      html, body, #map-canvas {
+        height: 200%;
+        margin: 0px;
+        padding: 0px;
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+    </style>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/global.css">
-    <!-- endbuild -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
+    <script th:inline="javascript">
+	/*<![CDATA[*/
+// Adding 500 Data Points
+var map, pointarray, heatmap;
 
+
+
+function initialize() {
+  //.5063
+  var results = [[${heatMapInfo}]];
+
+  
+  var heatmapData = [];
+  var i = 0;
+  while (i < results.length) {
+    var latLng = new google.maps.LatLng(results[i],results[i+1]);
+	var magnitude = results[i+2];
+    var weightedLoc = {
+      location: latLng,
+      weight: 100*magnitude*magnitude*magnitude*magnitude*magnitude*magnitude
+    };
+    heatmapData.push(weightedLoc);
+    i++;
+    i++;
+    i++;
+  }
+
+
+  var mapOptions = {
+    zoom: 14,
+    center: heatmapData[0].location,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  //var pointArray = new google.maps.MVCArray(heatmapData);
+
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: heatmapData,
+    dissipating: true,
+    radius: 250
+  });
+
+  heatmap.setMap(map);
+// radiusinMeters = 1632
+}
+
+function toggleHeatmap() {
+  heatmap.setMap(heatmap.getMap() ? null : map);
+}
+
+function changeGradient() {
+  var gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(63, 0, 91, 1)',
+    'rgba(127, 0, 63, 1)',
+    'rgba(191, 0, 31, 1)',
+    'rgba(255, 0, 0, 1)'
+  ]
+  heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+}
+
+function changeRadius() {
+  heatmap.set('radius', heatmap.get('radius') ? null : 250);
+}
+
+function changeOpacity() {
+  heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+	/*]]>*/
+    </script>
   </head>
+
   <body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <nav class="navbar navbar-default navbar-static-top navbar-map" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/index.html">
-            <img class="logo-svg" src="/images/icon_23241_blue.svg">
-            <h3 class="logo-text">DenFinder</h3>
-          </a>
-        </div>
-      </div>
-    </nav>
-
+    <div id="panel" style="position: fixed; top: 30px; right: 50;">
+      <button onclick="toggleHeatmap()" class="btn btn-primary ">Toggle Heatmap</button>
+      <button onclick="changeGradient()" class="btn btn-primary ">Change gradient</button>
+      <button onclick="changeRadius()" class="btn  btn-primary ">Change radius</button>
+      <button onclick="changeOpacity()" class="btn btn-primary">Change opacity</button>
+    </div>
     <div class="map-outer-container">
-      <div class="map-container">
-        <div class="panel panel-primary map-controls">
+	<div class="map-container">
+    <div class="panel panel-primary map-controls" style="z-index: 2;">
           <div class="panel-heading">Neighborhood Qualities</div>
           <div class="panel-body">
-            <form>
-              <div class="form-group">
-                <label for="">
-                  Preferred Location
-                </label>
-                <input type="text" class="form-control" placeholder="City, state or zip code" />
-              </div>
-              <div class="form-group">
-                <label for="">
-                  Income Range
-                </label>
-                <select name="" id="" class="form-control">
-                  <option value="0-25">Below $25K</option>
-                  <option value="25-50">Above $25K</option>
-                  <option value="50-75">Above $50K</option>
-                  <option value="75-100">Above $75K</option>
-                  <option value="100+">Above $100K</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="">Relationship Status</label>
-                <select name="" id="" class="form-control">
-                  <option value="Single">Single</option>
-                  <option value="Married">Married</option>
-                  <option value="It's Complicated">It's Complicated</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="">Age</label>
-                <select name="" id="" class="form-control">
-                  <option value="">Teens</option>
-                  <option value="">20's</option>
-                  <option value="">30's</option>
-                  <option value="">40's</option>
-                  <option value="">50's</option>
-                  <option value="">60's</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="">Preferred Community Type</label>
-                <select name="" id="" class="form-control">
-                  <option value="">Suburban</option>
-                  <option value="">City</option>
-                  <option value="">Rural</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="">Importance School System Quality</label>
-                <select name="" id="" class="form-control">
-                  <option value="">Very Important</option>
-                  <option value="">Somewhat Important</option>
-                  <option value="">Not Very Important</option>
-                </select>
-              </div>
-              <button type="submit" href="/map.html" class="btn btn-primary">Update</button>
-            </form>
+      <form action="#" th:action="@{/}" th:object="${userOptions}" method="post">
+            <div class="form-group">
+              <label for="">
+                Preferred Location
+              </label>
+              <input type="text" class="form-control" placeholder="City, state or zip code" th:field="*{locationName}" />
+              <!-- <td th:if="${#fields.hasErrors('locationName')}" th:errors="*{locationName}">Name Error</td> -->
+            </div>
+            <hr style="height:1px;border:none;color:#B8B8B8   ;background-color:#B8B8B8   ;" />
+            <div class="form-group">
+              <label for="">
+                Income Range
+              </label>
+              <select name="" id="" class="form-control" th:field="*{income}">
+                <option value="0-25">Below $25K</option>
+                <option value="25-50">$25-50K</option>
+                <option value="50-75">$50-75K</option>
+                <option value="75-100">$75-100</option>
+                <option value="100+">Above $100K</option>
+              </select>
+            </div>
+			 <div class="form-group">
+              <label for="">
+               	How Important is Income?
+              </label>
+              <select name="" id="" class="form-control" th:field="*{incomeImportance}">
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
+              </select>
+            </div>
+        	 
+            <div class="form-group">
+              <label for="">Relationship Status</label>
+              <select name="" id="" class="form-control" th:field="*{relationshipStatus}">
+                <option value="Single">Single</option>
+                <option value="Unmarried">Married</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">
+               	             How Important is the majority Relationship Status the area?
+              </label>
+              <select name="" id="" class="form-control" th:field="*{relationshipStatusImportance}">
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Age</label>
+              <select name="" id="" class="form-control" th:field="*{age}">
+                <option value="0-24">Under 25</option>
+                <option value="25-44">Between 25 and 44</option>
+                <option value="45-64">Between 45 and 64</option>
+                <option value="65+">65 and over</option>
+              </select>
+            </div>
+             <div class="form-group">
+              <label for="">
+               	 How Important is average Age of the area?
+              </label>
+              <select name="" id="" class="form-control" th:field="*{ageImportance}">
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Preferred Community Type</label>
+              <select name="" id="" class="form-control" th:field="*{communityType}">
+                <option value="Suburban">Suburban</option>
+                <option value="City">City</option>
+                <option value="Rural">Rural</option>
+              </select>
+            </div>
+            
+             <div class="form-group">
+              <label for="">
+               	  How Important is Community Type?
+              </label>
+              <select name="" id="" class="form-control" th:field="*{communityTypeImportance}">
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
+              </select>
+             </div>
+            <div class="form-group">
+              <label for="">How important is School System Quality?</label>
+              <select name="SchoolI" id="" class="form-control" th:field="*{schoolImportance}">
+                <option value="0">Do Not Include At All</option>
+				<option value="1">Not Important</option>
+				<option value="2">Not Very Important</option>
+                <option value="3">Somewhat Important</option>
+                <option value="4">Important</option>
+                <option value="5">Very Important</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-default btn-primary btn-lg btn-block">Find Housing</button>
+          </form>
           </div>
         </div>
-        <div class="map">
-        </div>
-      </div>  
-    </div>
-    
-
-    <!-- build:js scripts/main.js -->
+		<div class="map" id="map-canvas" style="z-index: 1;"></div>
+	</div>
+	</div>
+	
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/main.js"></script>
-    <!-- endbuild -->
-</body>
+    
+  </body>
 </html>
+
