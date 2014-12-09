@@ -113,6 +113,10 @@ public class MainController extends WebMvcConfigurerAdapter {
 				
 		Arrays.sort(apiResults);
 		int numPoints = 50;
+		
+		if (apiResults.length < 50)
+			numPoints = apiResults.length;
+		
 		ApiResults topResults[] = new ApiResults [numPoints];
 		
 		for (int b = 0; b < numPoints; b++) {

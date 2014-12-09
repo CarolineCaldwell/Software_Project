@@ -13,8 +13,8 @@ public class EducationAPIPage {
 		StringBuilder website = new StringBuilder();
 		
 		website.append("http://api.education.com/service/service.php?f=getTestRating&Resf=json&"
-						+ "key=5db6f572df259798a2af42edcbc125ba&sn=sf&v=4&"); // Lab 113 - Teacher's Computer
-						/*+ "key=6b1b07ef4acd2685928c44cbc517e22b&sn=sf&v=4&");*/ // Lab 214 - SDL05
+						/*+ "key=5db6f572df259798a2af42edcbc125ba&sn=sf&v=4&");*/ // Lab 113 - Teacher's Computer
+						+ "key=6b1b07ef4acd2685928c44cbc517e22b&sn=sf&v=4&"); // Lab 214 - SDL05
 						/*+ "key=5c24aa159693eb8fe46c8e075e347879&sn=sf&v=4&");*/ // Lab 214 - SDL14
 						/*+ "key=7733fc813d58fafdb89c995170cf481d&sn=sf&v=4&");*/ // Lab 113 - ACS13
 		
