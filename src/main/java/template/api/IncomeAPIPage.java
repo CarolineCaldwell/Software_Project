@@ -19,12 +19,12 @@ public class IncomeAPIPage {
 		// These are for the API calls within switch
 		website.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&get=B19001_");
 		basicSite.append("&for=tract:*&in=state:" + info.getState());
-		basicSite.append("+county:" + info.getCounty()); /* + "+tract:" + info.getTract())*/
+		basicSite.append("+county:" + info.getCounty());
 		
 		// This is the API call for the total income in the area
 		totalIncome.append("http://api.census.gov/data/2011/acs5?key=0de347d577c507172cd64a8375d2234674506014&"
 							+ "get=B19001_001E&for=tract:*&in=state:" + info.getState()
-							+ "+county:" + info.getCounty()); /* + "+tract:" + info.getTract())*/
+							+ "+county:" + info.getCounty());
 		
 		String totalSite = totalIncome.toString();
 				

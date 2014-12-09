@@ -70,7 +70,6 @@ public class UserOptions {
 			this.incomeImportance = incomeImportance;
 		}
 		
-		
 		public boolean isNotValid()
         {
             String name = this.locationName;

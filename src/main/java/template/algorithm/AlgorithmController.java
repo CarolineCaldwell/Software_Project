@@ -43,14 +43,10 @@ public class AlgorithmController
 			weightSum += apiStatic.getAreaWeight();
 		}
 		
-		
-		
 		if(weightSum == 0)
 			value = 0;
 		else
 			value = score / weightSum;
-		
-		//System.out.println("In Alg: " + value);
 		results.setAlgorithmValue(value);
 	}
 	
@@ -62,7 +58,6 @@ public class AlgorithmController
 		double value = results.getIncome();
 		value = value / results.getIncomeTotal();
 		value = value * apiStatic.getIncomeWeight();
-		//System.out.println(" Income: " + (value / apiStatic.getIncomeWeight()));
 		return value;
 	}
 	
@@ -79,14 +74,12 @@ public class AlgorithmController
 			value = value - results.getRelation();
 			value = value / results.getRelationTotal();
 			value = value * apiStatic.getRelationWeight();
-			//System.out.println(" Relation: " + (value / apiStatic.getRelationWeight()));
 			return value;
 		}	
 		
 		value = results.getRelation();
 		value = value / results.getRelationTotal();
 		value = value * apiStatic.getRelationWeight();
-		//System.out.println(" Relation: " + (value / apiStatic.getRelationWeight()));
 		return value;
 	}
 	
@@ -98,7 +91,6 @@ public class AlgorithmController
 		double value = results.getAge();
 		value = value / results.getAgeTotal();
 		value = value * apiStatic.getAgeWeight();
-		//System.out.println(" Age: " + (value / apiStatic.getAgeWeight()));
 		return value;
 	}
 	
@@ -121,8 +113,6 @@ public class AlgorithmController
 			value = 0;
 		else
 			value = (sum/count) / 10 * apiStatic.getSchoolWeight();
-		
-		//System.out.println(" School: " + (value / 10 / apiStatic.getSchoolWeight()));
 		return value;
 	}
 	
@@ -136,7 +126,6 @@ public class AlgorithmController
 			value = .75;
 		
 		value = value * apiStatic.getAreaWeight();
-		//System.out.println(" Area: " + (value / apiStatic.getAreaWeight()));
 		return value;
 	}
 	

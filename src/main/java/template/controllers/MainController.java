@@ -39,13 +39,7 @@ import template.parsers.*;
 
 @Controller 
 public class MainController extends WebMvcConfigurerAdapter {
-	
-	/*@Override
-	public void addViewControllers(ViewControllerRegistry registry) 
-	{
-        registry.addViewController("/results").setViewName("results");
-    }*/
-	
+		
 	@ModelAttribute("ratings")
 	public List<int[]> populateRatings()
 	{
@@ -66,7 +60,7 @@ public class MainController extends WebMvcConfigurerAdapter {
 		{
 			return "invalid";
 	    }
-		//return "redirect:/results";
+
 		System.out.println(userOptions.getLocationName());
 		System.out.println(userOptions.getIncome());
 		System.out.println(userOptions.getRelationshipStatus());

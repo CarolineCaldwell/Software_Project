@@ -3,22 +3,13 @@ package template.algorithm;
 public class ApiResults implements Comparable<ApiResults>
 {
 	private String tract;
-	//private int population;
 	private int income;
 	private int incomeTotal;
-	//private int incomeWeight;
-	//private boolean incomeIncluded;
 	private int relation;
 	private int relationTotal;
-	//private int relationWeight;
-	//private boolean relationIncluded;
 	private int age;
 	private int ageTotal;
-	//private int ageWeight;
-	//private boolean ageIncluded;
 	private int[] school;
-	//private int schoolWeight;
-	//private boolean schoolIncluded;
 	private double algorithmValue;
 	private String areaType;
 	
@@ -30,21 +21,12 @@ public class ApiResults implements Comparable<ApiResults>
 		tract = "";
 		income = 0;
 		incomeTotal = 0;
-		//incomeWeight = 0;
-		//incomeIncluded = true;
 		relation = 0;
 		relationTotal = 0;
-		//relationWeight = 0;
-		//relationIncluded = true;
 		age = 0;
 		ageTotal = 0;
 		algorithmValue = 0;
-		//ageWeight = 0;
-		//ageIncluded = true;
-		//schoolWeight = 0;
-		//schoolIncluded = true;
 		areaType = "";
-		
 		centerX = 0;
 		centerY = 0;
 		radius = 0;
@@ -125,33 +107,21 @@ public class ApiResults implements Comparable<ApiResults>
 	public void setAreaType(String areaType) {
 		this.areaType = areaType;
 	}
-
-
 	public double getCenterX() {
 		return centerX;
 	}
-
-
 	public void setCenterX(double centerX) {
 		this.centerX = centerX;
 	}
-
-
 	public double getCenterY() {
 		return centerY;
 	}
-
-
 	public void setCenterY(double centerY) {
 		this.centerY = centerY;
 	}
-
-
 	public double getRadius() {
 		return radius;
 	}
-
-
 	public void setRadius(double radius) {
 		this.radius = radius;
 	}
@@ -165,7 +135,6 @@ public class ApiResults implements Comparable<ApiResults>
 			return -1;
 		else
 			return 0;
-		//return (int) ((this.getAlgorithmValue()-arg0.getAlgorithmValue()) * 100);
 	}
 	
 }
